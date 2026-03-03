@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Adjust Stock" %} - Farmix{% endblock %}
+
+{% block content %}
+<div class="mb-6">
+    <h1 class="text-2xl font-bold text-gray-900">{% trans "Adjust Stock" %}</h1>
+    <p class="text-sm text-gray-500 mt-1">{{ lot.raw_material.name }} &middot; Lot {{ lot.lot_number }} &middot; {% trans "Current" %}: {{ lot.current_quantity|floatformat:"-3" }}</p>
+</div>
+<div class="max-w-2xl">
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}{% include "components/_form_field.html" %}{% endfor %}
+            <div class="flex gap-3 pt-4">
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                    {% trans "Adjust" %}
+                </button>
+                <a href="{% url 'inventory:lot_detail' lot.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                    {% trans "Cancel" %}
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

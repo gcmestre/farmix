@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Stock Movements" %} - Farmix{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Stock Movements" %}</h1>
+    </div>
+</div>
+
+<div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">{% trans "Date" %}</th>
+                    <th scope="col" class="px-6 py-3">{% trans "Type" %}</th>
+                    <th scope="col" class="px-6 py-3">{% trans "Material" %}</th>
+                    <th scope="col" class="px-6 py-3">{% trans "Lot" %}</th>
+                    <th scope="col" class="px-6 py-3 text-right">{% trans "Qty" %}</th>
+                    <th scope="col" class="px-6 py-3 text-right">{% trans "Balance" %}</th>
+                    <th scope="col" class="px-6 py-3">{% trans "By" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mv in movements %}
+                <tr class="bg-white border-b hover:bg-gray-50">
+                    <td class="px-6 py-4">{{ mv.timestamp|date:"d/m/Y H:i" }}</td>
+                    <td class="px-6 py-4 text-gray-900">{{ mv.get_movement_type_display }}</td>
+                    <td class="px-6 py-4 text-gray-900">{{ mv.lot.raw_material.name }}</td>
+                    <td class="px-6 py-4">{{ mv.lot.lot_number }}</td>
+                    <td class="px-6 py-4 text-right {% if mv.quantity < 0 %}text-red-600{% else %}text-green-600{% endif %}">{{ mv.quantity|floatformat:"-3" }}</td>
+                    <td class="px-6 py-4 text-right">{{ mv.balance_after|floatformat:"-3" }}</td>
+                    <td class="px-6 py-4">{{ mv.performed_by.get_full_name|default:"-" }}</td>
+                </tr>
+                {% empty %}
+                <tr class="bg-white border-b">
+                    <td colspan="7" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No movements recorded." %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

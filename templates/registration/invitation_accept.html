@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n static widget_tweaks %}
+
+{% block title %}{% trans "Accept Invitation" %} - Farmix{% endblock %}
+
+{% block auth_content %}
+<div class="w-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
+    <img src="{% static 'images/farmix.png' %}" class="h-12 mx-auto mb-2" alt="Farmix">
+    <h5 class="text-2xl font-bold text-center text-gray-900 mb-1">Farmix</h5>
+    <p class="text-sm text-center text-gray-500 mb-2">{% trans "Join" %} <strong>{{ invitation.pharmacy.name }}</strong></p>
+    <p class="text-xs text-center text-gray-400 mb-6">{% trans "You've been invited as" %} <strong>{{ invitation.get_role_display }}</strong></p>
+    {% if form.non_field_errors %}
+    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+        {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <form method="post" class="space-y-5">
+        {% csrf_token %}
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label for="id_first_name" class="block mb-2 text-sm font-medium text-gray-900">{% trans "First name" %}<span class="text-red-600 ms-1">*</span></label>
+                {% render_field form.first_name class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %}
+                {% for error in form.first_name.errors %}<p class="mt-2 text-sm text-red-600">{{ error }}</p>{% endfor %}
+            </div>
+            <div>
+                <label for="id_last_name" class="block mb-2 text-sm font-medium text-gray-900">{% trans "Last name" %}<span class="text-red-600 ms-1">*</span></label>
+                {% render_field form.last_name class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %}
+                {% for error in form.last_name.errors %}<p class="mt-2 text-sm text-red-600">{{ error }}</p>{% endfor %}
+            </div>
+        </div>
+        <div>
+            <label for="id_email" class="block mb-2 text-sm font-medium text-gray-900">{% trans "Email" %}</label>
+            {% render_field form.email class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-100" %}
+        </div>
+        <div>
+            <label for="id_password1" class="block mb-2 text-sm font-medium text-gray-900">{% trans "Password" %}<span class="text-red-600 ms-1">*</span></label>
+            {% render_field form.password1 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %}
+            {% if form.password1.help_text %}<p class="mt-2 text-sm text-gray-500">{{ form.password1.help_text }}</p>{% endif %}
+            {% for error in form.password1.errors %}<p class="mt-2 text-sm text-red-600">{{ error }}</p>{% endfor %}
+        </div>
+        <div>
+            <label for="id_password2" class="block mb-2 text-sm font-medium text-gray-900">{% trans "Confirm password" %}<span class="text-red-600 ms-1">*</span></label>
+            {% render_field form.password2 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %}
+            {% for error in form.password2.errors %}<p class="mt-2 text-sm text-red-600">{{ error }}</p>{% endfor %}
+        </div>
+        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{% trans "Create Account" %}</button>
+    </form>
+    <p class="mt-4 text-sm text-center text-gray-500">
+        {% trans "Already have an account?" %}
+        <a href="{% url 'login' %}" class="text-blue-600 hover:underline">{% trans "Sign in" %}</a>
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load i18n static widget_tweaks %}
+
+{% block title %}{% trans "Login" %} - Farmix{% endblock %}
+
+{% block auth_content %}
+<div class="w-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
+    <img src="{% static 'images/farmix.png' %}" class="h-12 mx-auto mb-2" alt="Farmix">
+    <h5 class="text-2xl font-bold text-center text-gray-900 mb-1">Farmix</h5>
+    <p class="text-sm text-center text-gray-500 mb-6">{% trans "Sign in to your account" %}</p>
+    {% if form.errors %}
+    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+        {% trans "Invalid email or password." %}
+    </div>
+    {% endif %}
+    <form method="post" class="space-y-5">
+        {% csrf_token %}
+        <div>
+            <label for="id_username" class="block mb-2 text-sm font-medium text-gray-900">{% trans "Email" %}</label>
+            {% render_field form.username class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="email@example.com" %}
+        </div>
+        <div>
+            <label for="id_password" class="block mb-2 text-sm font-medium text-gray-900">{% trans "Password" %}</label>
+            {% render_field form.password class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder=form.password.label %}
+        </div>
+        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{% trans "Sign in" %}</button>
+    </form>
+    <p class="mt-4 text-sm text-center text-gray-500">
+        {% trans "Don't have an account?" %}
+        <a href="{% url 'core:register' %}" class="text-blue-600 hover:underline">{% trans "Register" %}</a>
+    </p>
+</div>
+{% endblock %}

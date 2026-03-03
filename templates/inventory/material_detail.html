@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{{ material.name }} - Farmix{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{{ material.code }} - {{ material.name }}</h1>
+        <p class="mt-1 text-sm text-gray-500">
+            {{ material.default_unit }}
+            {% if material.cas_number %}&middot; CAS: {{ material.cas_number }}{% endif %}
+            {% if material.is_controlled_substance %}&middot; <span class="text-red-600 font-semibold">{% trans "Controlled Substance" %}</span>{% endif %}
+        </p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        {% if user|has_role:"admin" or user|has_role:"pharmacist" %}
+        <a href="{% url 'inventory:material_edit' material.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">{% trans "Edit" %}</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Stock Info card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Stock Info" %}</h5>
+        <dl class="grid grid-cols-1 gap-4">
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Current Stock" %}</dt>
+                <dd class="mt-1 text-sm {% if material.is_low_stock %}text-red-600 font-bold{% else %}text-gray-900{% endif %}">{{ material.current_stock|floatformat:"-3" }} {{ material.default_unit }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Minimum Stock" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ material.minimum_stock|floatformat:"-3" }} {{ material.default_unit }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Reorder Point" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ material.reorder_point|floatformat:"-3" }} {{ material.default_unit }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Preferred Supplier" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ material.preferred_supplier.name|default:"-" }}</dd>
+            </div>
+        </dl>
+    </div>
+
+    <!-- Active Lots table -->
+    <div class="lg:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Active Lots" %}</h5>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">{% trans "Lot #" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Supplier" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Qty" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Expiry" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lot in lots %}
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium text-blue-600 hover:underline">
+                            <a href="{% url 'inventory:lot_detail' lot.pk %}">{{ lot.lot_number }}</a>
+                        </td>
+                        <td class="px-6 py-4">{{ lot.supplier.name }}</td>
+                        <td class="px-6 py-4 text-right">{{ lot.current_quantity|floatformat:"-3" }}</td>
+                        <td class="px-6 py-4">{{ lot.expiry_date|date:"d/m/Y" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr class="bg-white border-b">
+                        <td colspan="4" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No active lots." %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% if movements %}
+<!-- Recent Movements table -->
+<div class="mt-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
+    <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Recent Movements" %}</h5>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">{% trans "Date" %}</th>
+                    <th scope="col" class="px-6 py-3">{% trans "Type" %}</th>
+                    <th scope="col" class="px-6 py-3">{% trans "Lot" %}</th>
+                    <th scope="col" class="px-6 py-3 text-right">{% trans "Qty" %}</th>
+                    <th scope="col" class="px-6 py-3 text-right">{% trans "Balance" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mv in movements %}
+                <tr class="bg-white border-b hover:bg-gray-50">
+                    <td class="px-6 py-4">{{ mv.timestamp|date:"d/m/Y H:i" }}</td>
+                    <td class="px-6 py-4 text-gray-900">{{ mv.get_movement_type_display }}</td>
+                    <td class="px-6 py-4">{{ mv.lot.lot_number }}</td>
+                    <td class="px-6 py-4 text-right {% if mv.quantity < 0 %}text-red-600{% else %}text-green-600{% endif %}">{{ mv.quantity|floatformat:"-3" }}</td>
+                    <td class="px-6 py-4 text-right">{{ mv.balance_after|floatformat:"-3" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

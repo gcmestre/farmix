@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}Lot {{ lot.lot_number }} - Farmix{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">Lot {{ lot.lot_number }}</h1>
+        <p class="mt-1 text-sm text-gray-500">{{ lot.raw_material.name }} &middot; {{ lot.supplier.name }}</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        {% if lot.is_quarantined %}{% include "components/_badge.html" with label="Quarantined" color="yellow" %}
+        {% elif lot.is_exhausted %}{% include "components/_badge.html" with label="Exhausted" color="gray" %}
+        {% else %}{% include "components/_badge.html" with label="Active" color="green" %}{% endif %}
+        {% if user|has_role:"admin" or user|has_role:"pharmacist" or user|has_role:"lab_technician" %}
+        <a href="{% url 'inventory:lot_adjust' lot.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">{% trans "Adjust" %}</a>
+        {% endif %}
+        {% if lot.is_quarantined and user|has_role:"pharmacist" or user|has_role:"admin" %}
+        <a href="{% url 'inventory:lot_release' lot.pk %}" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5" onclick="return confirm('{% trans "Release this lot from quarantine?" %}')">{% trans "Release" %}</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Details card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Details" %}</h5>
+        <dl class="grid grid-cols-1 gap-4">
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Material" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900"><a href="{% url 'inventory:material_detail' lot.raw_material.pk %}" class="text-blue-600 hover:underline">{{ lot.raw_material.name }}</a></dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Supplier" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ lot.supplier.name }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Initial Qty" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ lot.initial_quantity|floatformat:"-3" }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Current Qty" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ lot.current_quantity|floatformat:"-3" }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Received" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ lot.received_date|date:"d/m/Y" }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Expiry" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ lot.expiry_date|date:"d/m/Y" }}</dd>
+            </div>
+        </dl>
+    </div>
+
+    <!-- Movements table -->
+    <div class="lg:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Movements" %}</h5>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">{% trans "Date" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Type" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Qty" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Balance" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "By" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mv in movements %}
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4">{{ mv.timestamp|date:"d/m/Y H:i" }}</td>
+                        <td class="px-6 py-4 text-gray-900">{{ mv.get_movement_type_display }}</td>
+                        <td class="px-6 py-4 text-right {% if mv.quantity < 0 %}text-red-600{% else %}text-green-600{% endif %}">{{ mv.quantity|floatformat:"-3" }}</td>
+                        <td class="px-6 py-4 text-right">{{ mv.balance_after|floatformat:"-3" }}</td>
+                        <td class="px-6 py-4">{{ mv.performed_by.get_full_name|default:"-" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr class="bg-white border-b">
+                        <td colspan="5" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No movements." %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

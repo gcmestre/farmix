@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{{ formulation.name }} - Farmix{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{{ formulation.code }} - {{ formulation.name }}</h1>
+        <p class="mt-1 text-sm text-gray-500">{{ formulation.pharmaceutical_form }} &middot; {% trans "Shelf life" %}: {{ formulation.shelf_life_days }} {% trans "days" %}</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        <a href="{% url 'production:batch_calculator' formulation.pk %}" class="py-2.5 px-5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg">{% trans "Batch Calculator" %}</a>
+        {% if user|has_role:"admin" or user|has_role:"pharmacist" %}
+        <a href="{% url 'production:formulation_edit' formulation.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">{% trans "Edit" %}</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Ingredients card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <div class="flex justify-between items-center mb-4">
+            <h5 class="text-lg font-semibold text-gray-900">{% trans "Ingredients" %}</h5>
+            {% if user|has_role:"admin" or user|has_role:"pharmacist" %}
+            <button hx-get="{% url 'production:formulation_add_ingredient' formulation.pk %}" hx-target="#ingredient-form" hx-swap="innerHTML" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">{% trans "+ Add" %}</button>
+            {% endif %}
+        </div>
+        <div id="ingredient-form"></div>
+        <div id="ingredients-table">{% include "production/partials/_ingredients_table.html" %}</div>
+    </div>
+
+    <!-- Steps card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <div class="flex justify-between items-center mb-4">
+            <h5 class="text-lg font-semibold text-gray-900">{% trans "Steps" %}</h5>
+            {% if user|has_role:"admin" or user|has_role:"pharmacist" %}
+            <button hx-get="{% url 'production:formulation_add_step' formulation.pk %}" hx-target="#step-form" hx-swap="innerHTML" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">{% trans "+ Add" %}</button>
+            {% endif %}
+        </div>
+        <div id="step-form"></div>
+        <div id="steps-list">{% include "production/partials/_steps_list.html" %}</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% comment %}
+Usage: {% include "components/_card.html" with title="Card Title" %}
+{% endcomment %}
+<div class="p-6 bg-white border border-gray-200 rounded-lg shadow {{ extra_class|default:'' }}">
+    {% if title %}
+    <div class="mb-4 pb-4 border-b border-gray-200">
+        <h5 class="text-lg font-semibold text-gray-900">{{ title }}</h5>
+        {% if subtitle %}<p class="mt-1 text-sm text-gray-500">{{ subtitle }}</p>{% endif %}
+    </div>
+    {% endif %}
+    {{ body }}
+</div>

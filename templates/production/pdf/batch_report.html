@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha de Preparação - {{ batch.batch_number }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 11pt;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+        .header {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 16pt;
+            margin: 0 0 2px 0;
+        }
+        .header h2 {
+            font-size: 12pt;
+            color: #555;
+            margin: 0 0 5px 0;
+            font-weight: normal;
+        }
+        .header p {
+            font-size: 9pt;
+            color: #555;
+            margin: 1px 0;
+        }
+        .designation {
+            display: inline-block;
+            border: 1px solid #333;
+            padding: 2px 8px;
+            font-size: 9pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        .section {
+            margin-bottom: 18px;
+        }
+        .section h2 {
+            font-size: 12pt;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 5px 8px;
+            text-align: left;
+            font-size: 10pt;
+        }
+        th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+        .info-grid {
+            display: table;
+            width: 100%;
+        }
+        .info-row {
+            display: table-row;
+        }
+        .info-label {
+            display: table-cell;
+            padding: 3px 8px 3px 0;
+            font-weight: 600;
+            width: 160px;
+            font-size: 10pt;
+            color: #555;
+        }
+        .info-value {
+            display: table-cell;
+            padding: 3px 0;
+            font-size: 10pt;
+        }
+        .footer {
+            margin-top: 25px;
+            border-top: 1px solid #ccc;
+            padding-top: 8px;
+            font-size: 8pt;
+            color: #777;
+        }
+        .signature-area {
+            margin-top: 35px;
+            display: table;
+            width: 100%;
+        }
+        .signature-box {
+            display: table-cell;
+            width: 45%;
+            text-align: center;
+            padding-top: 35px;
+            border-top: 1px solid #333;
+            font-size: 10pt;
+        }
+        .signature-spacer {
+            display: table-cell;
+            width: 10%;
+        }
+        .qc-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 9pt;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .qc-pass { background: #d1fae5; color: #065f46; }
+        .qc-fail { background: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Ficha de Preparação de Medicamento Manipulado</h1>
+        <h2>{{ pharmacy_name }}{% if pharmacy_anf_number %} &mdash; ANF n.º {{ pharmacy_anf_number }}{% endif %}</h2>
+        {% if pharmacy_address %}<p>{{ pharmacy_address }}{% if pharmacy_phone %} &middot; Tel: {{ pharmacy_phone }}{% endif %}{% if pharmacy_nif %} &middot; NIF: {{ pharmacy_nif }}{% endif %}</p>{% endif %}
+        {% if pharmacy_technical_director %}<p>Diretor(a) Técnico(a): {{ pharmacy_technical_director }}</p>{% endif %}
+        <span class="designation">Medicamento Manipulado</span>
+    </div>
+
+    <!-- Batch Details -->
+    <div class="section">
+        <h2>Dados da Preparação</h2>
+        <div class="info-grid">
+            <div class="info-row">
+                <span class="info-label">N.º Lote:</span>
+                <span class="info-value"><strong>{{ batch.batch_number }}</strong></span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Formulação:</span>
+                <span class="info-value">{{ batch.formulation.code }} - {{ batch.formulation.name }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Forma Farmacêutica:</span>
+                <span class="info-value">{{ batch.formulation.pharmaceutical_form }}</span>
+            </div>
+            {% if batch.formulation.route_of_administration %}
+            <div class="info-row">
+                <span class="info-label">Via de Administração:</span>
+                <span class="info-value">{{ batch.formulation.route_of_administration }}</span>
+            </div>
+            {% endif %}
+            <div class="info-row">
+                <span class="info-label">Quantidade Produzida:</span>
+                <span class="info-value">{{ batch.quantity_produced|floatformat:"-3" }} {{ batch.unit }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Data de Validade:</span>
+                <span class="info-value">{{ batch.expiry_date|date:"d/m/Y"|default:"-" }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Conservação:</span>
+                <span class="info-value">{{ batch.storage_conditions|default:batch.formulation.storage_conditions|default:"-" }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Encomenda:</span>
+                <span class="info-value">{{ batch.order.order_number }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Estado:</span>
+                <span class="info-value">{{ batch.get_status_display }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prescription / Patient -->
+    {% if prescription %}
+    <div class="section">
+        <h2>Dados da Prescrição</h2>
+        <div class="info-grid">
+            <div class="info-row">
+                <span class="info-label">Utente:</span>
+                <span class="info-value">{{ prescription.patient_name }}</span>
+            </div>
+            {% if prescription.patient_tax_number %}
+            <div class="info-row">
+                <span class="info-label">NIF Utente:</span>
+                <span class="info-value">{{ prescription.patient_tax_number }}</span>
+            </div>
+            {% endif %}
+            {% if prescription.patient_address %}
+            <div class="info-row">
+                <span class="info-label">Morada:</span>
+                <span class="info-value">{{ prescription.patient_address }}</span>
+            </div>
+            {% endif %}
+            <div class="info-row">
+                <span class="info-label">Médico Prescritor:</span>
+                <span class="info-value">{{ prescription.doctor_name }}{% if prescription.doctor_license %} (Cédula: {{ prescription.doctor_license }}){% endif %}</span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Material Usage / Traceability -->
+    {% if material_usage %}
+    <div class="section">
+        <h2>Matérias-Primas Utilizadas / Rastreabilidade</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Matéria-Prima</th>
+                    <th>N.º Lote</th>
+                    <th>Fornecedor</th>
+                    <th style="text-align:right">Quantidade Utilizada</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usage in material_usage %}
+                <tr>
+                    <td>{{ usage.lot.raw_material.name }}</td>
+                    <td>{{ usage.lot.lot_number }}</td>
+                    <td>{{ usage.lot.supplier.name|default:"-" }}</td>
+                    <td style="text-align:right">{{ usage.quantity_used|floatformat:"-4" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- Production Steps -->
+    {% if step_logs %}
+    <div class="section">
+        <h2>Procedimento de Preparação</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:40px">#</th>
+                    <th>Passo</th>
+                    <th>Executado por</th>
+                    <th>Data/Hora</th>
+                    <th>Observações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in step_logs %}
+                <tr>
+                    <td>{{ log.step.step_number }}</td>
+                    <td>{{ log.step.title }}</td>
+                    <td>{{ log.performed_by.get_full_name|default:"-" }}</td>
+                    <td>{{ log.completed_at|date:"d/m/Y H:i"|default:"-" }}</td>
+                    <td>{{ log.observations|default:"-" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- Quality Control -->
+    {% if qc %}
+    <div class="section">
+        <h2>Controlo de Qualidade</h2>
+        <span class="qc-badge {% if qc.passed %}qc-pass{% else %}qc-fail{% endif %}">
+            {% if qc.passed %}Aprovado{% else %}Reprovado{% endif %}
+        </span>
+        <div class="info-grid" style="margin-top: 8px;">
+            <div class="info-row">
+                <span class="info-label">Aspeto:</span>
+                <span class="info-value">{{ qc.appearance }}</span>
+            </div>
+            {% if qc.odor %}
+            <div class="info-row">
+                <span class="info-label">Odor:</span>
+                <span class="info-value">{{ qc.odor }}</span>
+            </div>
+            {% endif %}
+            {% if qc.texture %}
+            <div class="info-row">
+                <span class="info-label">Textura:</span>
+                <span class="info-value">{{ qc.texture }}</span>
+            </div>
+            {% endif %}
+            {% if qc.ph_value %}
+            <div class="info-row">
+                <span class="info-label">pH:</span>
+                <span class="info-value">{{ qc.ph_value|floatformat:"-2" }}</span>
+            </div>
+            {% endif %}
+            {% if qc.expected_weight %}
+            <div class="info-row">
+                <span class="info-label">Peso Esperado:</span>
+                <span class="info-value">{{ qc.expected_weight|floatformat:"-3" }}</span>
+            </div>
+            {% endif %}
+            {% if qc.actual_weight %}
+            <div class="info-row">
+                <span class="info-label">Peso Real:</span>
+                <span class="info-value">{{ qc.actual_weight|floatformat:"-3" }}</span>
+            </div>
+            {% endif %}
+            {% if qc.weight_deviation_pct %}
+            <div class="info-row">
+                <span class="info-label">Desvio (%):</span>
+                <span class="info-value">{{ qc.weight_deviation_pct|floatformat:"-2" }}%</span>
+            </div>
+            {% endif %}
+            {% if qc.observations %}
+            <div class="info-row">
+                <span class="info-label">Observações:</span>
+                <span class="info-value">{{ qc.observations }}</span>
+            </div>
+            {% endif %}
+            <div class="info-row">
+                <span class="info-label">Realizado por:</span>
+                <span class="info-value">{{ qc.performed_by.get_full_name|default:"-" }} &mdash; {{ qc.performed_at|date:"d/m/Y H:i" }}</span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Cost Breakdown -->
+    {% if cost %}
+    <div class="section">
+        <h2>Cálculo do Preço (Portaria 769/2004)</h2>
+        <table>
+            <tr>
+                <td>Matérias-primas</td>
+                <td style="text-align:right">&euro;{{ cost.raw_material_cost|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Material de embalagem</td>
+                <td style="text-align:right">&euro;{{ cost.packaging_cost|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Honorários de preparação</td>
+                <td style="text-align:right">&euro;{{ cost.preparation_fee|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <th style="text-align:right">&euro;{{ cost.total_cost|floatformat:2 }}</th>
+            </tr>
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- Signatures -->
+    <div class="signature-area">
+        <div class="signature-box">
+            Preparado por<br>
+            {{ batch.produced_by.get_full_name|default:"________________" }}
+        </div>
+        <div class="signature-spacer"></div>
+        <div class="signature-box">
+            Verificado / Aprovado por<br>
+            {{ batch.verified_by.get_full_name|default:"________________" }}
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Documento gerado em {% now "d/m/Y H:i" %} &mdash; {{ pharmacy_name }}</p>
+        <p>Este documento constitui a Ficha de Preparação conforme Portaria 594/2004.</p>
+    </div>
+</body>
+</html>

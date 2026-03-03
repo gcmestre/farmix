@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{{ supplier.name }} - Farmix{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{{ supplier.name }}</h1>
+        <p class="mt-1 text-sm text-gray-500">NIF: {{ supplier.nif }}</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        {% if user|has_role:"admin" or user|has_role:"pharmacist" %}
+        <a href="{% url 'inventory:supplier_edit' supplier.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">{% trans "Edit" %}</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Contact Info card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Contact Info" %}</h5>
+        <dl class="grid grid-cols-1 gap-4">
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Email" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ supplier.email|default:"-" }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Phone" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ supplier.phone|default:"-" }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Active" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{% if supplier.is_active %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</dd>
+            </div>
+        </dl>
+        {% if supplier.address %}
+        <div class="mt-4 pt-4 border-t border-gray-200">
+            <dt class="text-sm font-medium text-gray-500">{% trans "Address" %}</dt>
+            <dd class="mt-1 text-sm text-gray-900">{{ supplier.address }}</dd>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Recent Lots table -->
+    <div class="lg:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Recent Lots" %}</h5>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">{% trans "Lot #" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Material" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Qty" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Expiry" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lot in lots %}
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium text-blue-600 hover:underline">
+                            <a href="{% url 'inventory:lot_detail' lot.pk %}">{{ lot.lot_number }}</a>
+                        </td>
+                        <td class="px-6 py-4 text-gray-900">{{ lot.raw_material.name }}</td>
+                        <td class="px-6 py-4 text-right">{{ lot.current_quantity|floatformat:"-3" }}</td>
+                        <td class="px-6 py-4">{{ lot.expiry_date|date:"d/m/Y" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr class="bg-white border-b">
+                        <td colspan="4" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No lots from this supplier." %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

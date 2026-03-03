@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{{ client.name }} - Farmix{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{{ client.name }}</h1>
+        <p class="mt-1 text-sm text-gray-500">{{ client.get_client_type_display }} &middot; NIF: {{ client.nif }}</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        {% if user|can_manage:"orders" %}
+        <a href="{% url 'orders:client_edit' client.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">{% trans "Edit" %}</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Contact Info card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Contact Info" %}</h5>
+        <dl class="grid grid-cols-1 gap-4">
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Email" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ client.email|default:"-" }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Phone" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ client.phone|default:"-" }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Infarmed Code" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ client.infarmed_code|default:"-" }}</dd>
+            </div>
+        </dl>
+    </div>
+
+    <!-- Recent Orders table -->
+    <div class="lg:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Recent Orders" %}</h5>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">{% trans "Order #" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Status" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Date" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium text-blue-600 hover:underline">
+                            <a href="{% url 'orders:order_detail' order.pk %}">{{ order.order_number }}</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            {% include "components/_badge.html" with label=order.get_status_display color=order.status|status_color %}
+                        </td>
+                        <td class="px-6 py-4 text-gray-500">{{ order.created_at|date:"d/m/Y" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr class="bg-white border-b">
+                        <td colspan="3" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No orders yet." %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

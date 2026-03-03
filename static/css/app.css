@@ -1,0 +1,6 @@
+/* CompoundMeds - Custom styles (extend Tailwind as needed) */
+
+/* Print styles for PDF generation */
+@media print {
+    .no-print { display: none !important; }
+}

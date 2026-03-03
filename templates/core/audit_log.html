@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{% trans "Audit Log" %} - Farmix{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Audit Log" %}</h1>
+        <p class="mt-1 text-sm text-gray-500">{% trans "Immutable record of all system actions." %}</p>
+    </div>
+</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3">{% trans "Timestamp" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "User" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Action" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Model" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Object" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "IP" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr class="bg-white border-b hover:bg-gray-50">
+                <td class="px-6 py-4 whitespace-nowrap">{{ log.timestamp|date:"Y-m-d H:i:s" }}</td>
+                <td class="px-6 py-4 text-gray-900">{{ log.user|default:"-" }}</td>
+                <td class="px-6 py-4">
+                    {% include "components/_badge.html" with label=log.get_action_display color=log.action|status_color %}
+                </td>
+                <td class="px-6 py-4">{{ log.model_name }}</td>
+                <td class="px-6 py-4 font-mono text-xs">{{ log.object_id|truncatechars:12 }}</td>
+                <td class="px-6 py-4">{{ log.ip_address|default:"-" }}</td>
+            </tr>
+            {% empty %}
+            <tr class="bg-white">
+                <td colspan="6" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No audit log entries found." %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

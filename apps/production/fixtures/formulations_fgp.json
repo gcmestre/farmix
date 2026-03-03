@@ -1,0 +1,1384 @@
+[
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000001",
+    "fields": {
+      "code": "FGP-001",
+      "name": "Pomada de Vaselina Salicilada 5%",
+      "pharmaceutical_form": "Pomada",
+      "route_of_administration": "Cutânea",
+      "dosage_instructions": "Aplicar na zona afetada 1-2 vezes por dia, em camada fina. Não aplicar em mais de 20% da superfície corporal.",
+      "is_multi_stage": false,
+      "shelf_life_days": 180,
+      "storage_conditions": "Conservar em local fresco e seco, ao abrigo da luz. T < 25°C.",
+      "base_quantity": "100.000",
+      "base_unit": "g",
+      "notes": "FGP - Formulário Galénico Português. Queratolítico para psoríase, ictiose, eczemas, calosidades.",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000001",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000001",
+      "raw_material": "00000000-0000-0000-0000-000000000001",
+      "quantity": "5.0000",
+      "unit": "g",
+      "is_active_ingredient": true,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000002",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000001",
+      "raw_material": "00000000-0000-0000-0000-000000000002",
+      "quantity": "95.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000001",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000001",
+      "step_number": 1,
+      "title": "Fundir a vaselina",
+      "description": "Fundir cerca de metade da vaselina branca a ~60°C em banho-maria.",
+      "estimated_duration": "00:10:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000002",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000001",
+      "step_number": 2,
+      "title": "Incorporar ácido salicílico",
+      "description": "Incorporar o ácido salicílico (pó fino) na vaselina fundida, com agitação contínua.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000003",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000001",
+      "step_number": 3,
+      "title": "Espatular até homogeneidade",
+      "description": "Deixar arrefecer e espatular com a restante vaselina até obter uma pomada homogénea.",
+      "estimated_duration": "00:10:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000002",
+    "fields": {
+      "code": "FGP-002",
+      "name": "Solução Alcoólica de Ácido Bórico à Saturação",
+      "pharmaceutical_form": "Solução cutânea",
+      "route_of_administration": "Auricular",
+      "dosage_instructions": "Aplicar 2-3 gotas no canal auditivo, 2-3 vezes por dia. Uso externo.",
+      "is_multi_stage": false,
+      "shelf_life_days": 180,
+      "storage_conditions": "Conservar em local fresco, ao abrigo da luz. Frasco bem fechado.",
+      "base_quantity": "100.000",
+      "base_unit": "mL",
+      "notes": "FGP - Álcool boricado. Antisséptico auricular. Otite externa.",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000003",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000002",
+      "raw_material": "00000000-0000-0000-0000-000000000003",
+      "quantity": "5.0000",
+      "unit": "g",
+      "is_active_ingredient": true,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000004",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000002",
+      "raw_material": "00000000-0000-0000-0000-000000000004",
+      "quantity": "95.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000004",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000002",
+      "step_number": 1,
+      "title": "Dissolver ácido bórico",
+      "description": "Dissolver o ácido bórico no álcool etílico 60% a ~40°C, com agitação.",
+      "estimated_duration": "00:10:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000005",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000002",
+      "step_number": 2,
+      "title": "Filtrar e acondicionar",
+      "description": "Filtrar por lã de vidro. Acondicionar em frasco de vidro âmbar.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000003",
+    "fields": {
+      "code": "FGP-003",
+      "name": "Creme de Permetrina 5%",
+      "pharmaceutical_form": "Creme",
+      "route_of_administration": "Cutânea",
+      "dosage_instructions": "Aplicar em toda a superfície corporal do pescoço para baixo. Deixar atuar 8-12 horas. Lavar após o período de contacto.",
+      "is_multi_stage": true,
+      "shelf_life_days": 90,
+      "storage_conditions": "Conservar a temperatura inferior a 25°C. Proteger da luz.",
+      "base_quantity": "100.000",
+      "base_unit": "g",
+      "notes": "FGP - Tratamento de escabiose (sarna). Inseticida piretróide.",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000005",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000003",
+      "raw_material": "00000000-0000-0000-0000-000000000005",
+      "quantity": "5.0000",
+      "unit": "g",
+      "is_active_ingredient": true,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000006",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000003",
+      "raw_material": "00000000-0000-0000-0000-000000000006",
+      "quantity": "15.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000007",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000003",
+      "raw_material": "00000000-0000-0000-0000-000000000007",
+      "quantity": "10.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 3,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000008",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000003",
+      "raw_material": "00000000-0000-0000-0000-000000000018",
+      "quantity": "5.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 4,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000009",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000003",
+      "raw_material": "00000000-0000-0000-0000-000000000008",
+      "quantity": "65.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 5,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000006",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000003",
+      "step_number": 1,
+      "title": "Preparar fase oleosa",
+      "description": "Fundir a cera emulsificante com a parafina líquida a 60-70°C.",
+      "estimated_duration": "00:15:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000007",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000003",
+      "step_number": 2,
+      "title": "Preparar fase aquosa",
+      "description": "Aquecer a água purificada com a glicerina a 60-70°C.",
+      "estimated_duration": "00:10:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000008",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000003",
+      "step_number": 3,
+      "title": "Emulsificar",
+      "description": "Verter lentamente a fase aquosa sobre a fase oleosa, agitando continuamente até arrefecimento.",
+      "estimated_duration": "00:15:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000009",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000003",
+      "step_number": 4,
+      "title": "Incorporar permetrina",
+      "description": "Após arrefecimento (~30°C), incorporar a permetrina com agitação suave até homogeneidade.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000004",
+    "fields": {
+      "code": "FGP-004",
+      "name": "Suspensão Oral de Trimetoprim 1%",
+      "pharmaceutical_form": "Suspensão oral",
+      "route_of_administration": "Oral",
+      "dosage_instructions": "Agitar antes de usar. Dose segundo prescrição médica. Uso pediátrico.",
+      "is_multi_stage": false,
+      "shelf_life_days": 14,
+      "storage_conditions": "Conservar no frigorífico (2-8°C). Agitar antes de cada utilização.",
+      "base_quantity": "100.000",
+      "base_unit": "mL",
+      "notes": "FGP - Antibacteriano pediátrico. Prazo reduzido por ser preparação aquosa.",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000010",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000004",
+      "raw_material": "00000000-0000-0000-0000-000000000009",
+      "quantity": "1.0000",
+      "unit": "g",
+      "is_active_ingredient": true,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000011",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000004",
+      "raw_material": "00000000-0000-0000-0000-000000000022",
+      "quantity": "0.5000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000012",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000004",
+      "raw_material": "00000000-0000-0000-0000-000000000010",
+      "quantity": "50.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 3,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000013",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000004",
+      "raw_material": "00000000-0000-0000-0000-000000000008",
+      "quantity": "48.5000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 4,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000010",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000004",
+      "step_number": 1,
+      "title": "Preparar gel de metilcelulose",
+      "description": "Dispersar a metilcelulose em metade da água purificada a 80-90°C. Adicionar o restante da água fria.",
+      "estimated_duration": "00:15:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000011",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000004",
+      "step_number": 2,
+      "title": "Dispersar trimetoprim",
+      "description": "Triturar o trimetoprim a pó fino e dispersar em pequena porção do xarope simples.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000012",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000004",
+      "step_number": 3,
+      "title": "Misturar e completar volume",
+      "description": "Adicionar o gel de metilcelulose e o restante xarope simples. Agitar até homogeneidade. Completar volume.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000005",
+    "fields": {
+      "code": "FGP-005",
+      "name": "Solução de Minoxidil 5%",
+      "pharmaceutical_form": "Solução cutânea",
+      "route_of_administration": "Cutânea",
+      "dosage_instructions": "Aplicar 1 mL no couro cabeludo 2 vezes por dia. Não exceder a dose. Lavar as mãos após aplicação.",
+      "is_multi_stage": false,
+      "shelf_life_days": 180,
+      "storage_conditions": "Conservar a temperatura inferior a 25°C. Proteger da luz. Inflamável.",
+      "base_quantity": "100.000",
+      "base_unit": "mL",
+      "notes": "FGP - Tratamento da alopecia androgenética. Sujeito a receita médica.",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000014",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000005",
+      "raw_material": "00000000-0000-0000-0000-000000000011",
+      "quantity": "5.0000",
+      "unit": "g",
+      "is_active_ingredient": true,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000015",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000005",
+      "raw_material": "00000000-0000-0000-0000-000000000012",
+      "quantity": "20.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000016",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000005",
+      "raw_material": "00000000-0000-0000-0000-000000000013",
+      "quantity": "30.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 3,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000017",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000005",
+      "raw_material": "00000000-0000-0000-0000-000000000008",
+      "quantity": "45.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 4,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000013",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000005",
+      "step_number": 1,
+      "title": "Dissolver minoxidil",
+      "description": "Dissolver o minoxidil no propilenoglicol e álcool etílico 96%, com ligeiro aquecimento se necessário (~40°C).",
+      "estimated_duration": "00:10:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000014",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000005",
+      "step_number": 2,
+      "title": "Completar com água purificada",
+      "description": "Adicionar a água purificada q.b.p. 100 mL. Filtrar se necessário. Acondicionar em frasco conta-gotas.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000006",
+    "fields": {
+      "code": "FGP-006",
+      "name": "Solução Oral de Propranolol 0.1%",
+      "pharmaceutical_form": "Solução oral",
+      "route_of_administration": "Oral",
+      "dosage_instructions": "Dose segundo prescrição médica. Uso pediátrico. Medir com seringa oral doseadora.",
+      "is_multi_stage": false,
+      "shelf_life_days": 14,
+      "storage_conditions": "Conservar no frigorífico (2-8°C). Proteger da luz.",
+      "base_quantity": "100.000",
+      "base_unit": "mL",
+      "notes": "FGP - Beta-bloqueador pediátrico. Hemangiomas infantis. Prazo reduzido (preparação aquosa).",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000018",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000006",
+      "raw_material": "00000000-0000-0000-0000-000000000014",
+      "quantity": "0.1000",
+      "unit": "g",
+      "is_active_ingredient": true,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000019",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000006",
+      "raw_material": "00000000-0000-0000-0000-000000000023",
+      "quantity": "0.1000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000020",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000006",
+      "raw_material": "00000000-0000-0000-0000-000000000010",
+      "quantity": "50.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 3,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000021",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000006",
+      "raw_material": "00000000-0000-0000-0000-000000000008",
+      "quantity": "49.8000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 4,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000015",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000006",
+      "step_number": 1,
+      "title": "Dissolver propranolol",
+      "description": "Dissolver o cloridrato de propranolol em pequeno volume de água purificada.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000016",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000006",
+      "step_number": 2,
+      "title": "Adicionar ácido cítrico e xarope",
+      "description": "Adicionar o ácido cítrico para ajuste de pH. Incorporar o xarope simples.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000017",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000006",
+      "step_number": 3,
+      "title": "Completar volume",
+      "description": "Completar com água purificada q.b.p. 100 mL. Homogeneizar.",
+      "estimated_duration": "00:03:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000007",
+    "fields": {
+      "code": "FGP-007",
+      "name": "Pasta de Lassar (Pasta de Zinco)",
+      "pharmaceutical_form": "Pasta",
+      "route_of_administration": "Cutânea",
+      "dosage_instructions": "Aplicar na zona afetada 2-3 vezes por dia, em camada espessa.",
+      "is_multi_stage": false,
+      "shelf_life_days": 180,
+      "storage_conditions": "Conservar em local fresco e seco. T < 25°C.",
+      "base_quantity": "100.000",
+      "base_unit": "g",
+      "notes": "FGP - Protetor cutâneo. Pasta de zinco com amido. Dermatite das fraldas, eczemas.",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000022",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000007",
+      "raw_material": "00000000-0000-0000-0000-000000000015",
+      "quantity": "25.0000",
+      "unit": "g",
+      "is_active_ingredient": true,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000023",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000007",
+      "raw_material": "00000000-0000-0000-0000-000000000016",
+      "quantity": "25.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000024",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000007",
+      "raw_material": "00000000-0000-0000-0000-000000000017",
+      "quantity": "25.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 3,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000025",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000007",
+      "raw_material": "00000000-0000-0000-0000-000000000002",
+      "quantity": "25.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 4,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000018",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000007",
+      "step_number": 1,
+      "title": "Pulverizar pós",
+      "description": "Pulverizar finamente o óxido de zinco e o amido de trigo. Misturar os pós.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000019",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000007",
+      "step_number": 2,
+      "title": "Fundir excipientes gordos",
+      "description": "Fundir a lanolina com a vaselina branca a ~60°C.",
+      "estimated_duration": "00:10:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000020",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000007",
+      "step_number": 3,
+      "title": "Incorporar pós",
+      "description": "Incorporar a mistura de pós na massa fundida. Espatular até homogeneidade e arrefecimento.",
+      "estimated_duration": "00:10:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000008",
+    "fields": {
+      "code": "FGP-008",
+      "name": "Creme Hidratante (Base de Beeler)",
+      "pharmaceutical_form": "Creme",
+      "route_of_administration": "Cutânea",
+      "dosage_instructions": "Aplicar generosamente na pele, 2-3 vezes por dia ou conforme necessário.",
+      "is_multi_stage": true,
+      "shelf_life_days": 90,
+      "storage_conditions": "Conservar a temperatura inferior a 25°C.",
+      "base_quantity": "100.000",
+      "base_unit": "g",
+      "notes": "FGP - Base de Beeler. Creme O/A. Base hidratante para incorporação de princípios ativos.",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000026",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000008",
+      "raw_material": "00000000-0000-0000-0000-000000000006",
+      "quantity": "18.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000027",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000008",
+      "raw_material": "00000000-0000-0000-0000-000000000019",
+      "quantity": "1.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000028",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000008",
+      "raw_material": "00000000-0000-0000-0000-000000000007",
+      "quantity": "10.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 3,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000029",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000008",
+      "raw_material": "00000000-0000-0000-0000-000000000018",
+      "quantity": "5.0000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 4,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000030",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000008",
+      "raw_material": "00000000-0000-0000-0000-000000000008",
+      "quantity": "66.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 5,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000021",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000008",
+      "step_number": 1,
+      "title": "Preparar fase oleosa",
+      "description": "Fundir o álcool cetoestearílico e a parafina líquida a 60-70°C.",
+      "estimated_duration": "00:15:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000022",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000008",
+      "step_number": 2,
+      "title": "Preparar fase aquosa",
+      "description": "Dissolver o laurilsulfato de sódio e a glicerina na água purificada a 60-70°C.",
+      "estimated_duration": "00:10:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000023",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000008",
+      "step_number": 3,
+      "title": "Emulsificar e arrefecer",
+      "description": "Verter a fase aquosa sobre a fase oleosa à mesma temperatura. Agitar vigorosamente até arrefecimento completo.",
+      "estimated_duration": "00:20:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000009",
+    "fields": {
+      "code": "FGP-009",
+      "name": "Solução de Ácido Salicílico 2%",
+      "pharmaceutical_form": "Solução cutânea",
+      "route_of_administration": "Cutânea",
+      "dosage_instructions": "Aplicar na zona afetada 1-2 vezes por dia com algodão. Evitar contacto com olhos e mucosas.",
+      "is_multi_stage": false,
+      "shelf_life_days": 180,
+      "storage_conditions": "Conservar em local fresco, ao abrigo da luz. Frasco âmbar.",
+      "base_quantity": "100.000",
+      "base_unit": "mL",
+      "notes": "FGP - Queratolítico em solução. Dermatite seborreica, caspa, acne.",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000031",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000009",
+      "raw_material": "00000000-0000-0000-0000-000000000001",
+      "quantity": "2.0000",
+      "unit": "g",
+      "is_active_ingredient": true,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000032",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000009",
+      "raw_material": "00000000-0000-0000-0000-000000000020",
+      "quantity": "40.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000033",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000009",
+      "raw_material": "00000000-0000-0000-0000-000000000008",
+      "quantity": "58.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 3,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000024",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000009",
+      "step_number": 1,
+      "title": "Dissolver ácido salicílico",
+      "description": "Dissolver o ácido salicílico no álcool isopropílico.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000025",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000009",
+      "step_number": 2,
+      "title": "Completar com água",
+      "description": "Adicionar água purificada q.b.p. 100 mL. Homogeneizar. Filtrar se necessário.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulation",
+    "pk": "10000000-0000-0000-0000-000000000010",
+    "fields": {
+      "code": "FGP-010",
+      "name": "Suspensão Oral de Hidrocortisona 0.1%",
+      "pharmaceutical_form": "Suspensão oral",
+      "route_of_administration": "Oral",
+      "dosage_instructions": "Agitar bem antes de usar. Dose segundo prescrição médica. Uso pediátrico.",
+      "is_multi_stage": false,
+      "shelf_life_days": 14,
+      "storage_conditions": "Conservar no frigorífico (2-8°C). Agitar antes de cada utilização.",
+      "base_quantity": "100.000",
+      "base_unit": "mL",
+      "notes": "FGP A.V.1 - Corticosteroide oral pediátrico. Insuficiência suprarrenal. Prazo reduzido.",
+      "pharmacy": null,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000034",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000010",
+      "raw_material": "00000000-0000-0000-0000-000000000021",
+      "quantity": "0.1000",
+      "unit": "g",
+      "is_active_ingredient": true,
+      "order_of_addition": 1,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000035",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000010",
+      "raw_material": "00000000-0000-0000-0000-000000000022",
+      "quantity": "0.5000",
+      "unit": "g",
+      "is_active_ingredient": false,
+      "order_of_addition": 2,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000036",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000010",
+      "raw_material": "00000000-0000-0000-0000-000000000010",
+      "quantity": "50.0000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 3,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationingredient",
+    "pk": "20000000-0000-0000-0000-000000000037",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000010",
+      "raw_material": "00000000-0000-0000-0000-000000000008",
+      "quantity": "49.4000",
+      "unit": "mL",
+      "is_active_ingredient": false,
+      "order_of_addition": 4,
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000026",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000010",
+      "step_number": 1,
+      "title": "Preparar gel suspensor",
+      "description": "Dispersar a metilcelulose em metade da água purificada a 80-90°C. Adicionar o restante frio.",
+      "estimated_duration": "00:15:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000027",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000010",
+      "step_number": 2,
+      "title": "Dispersar hidrocortisona",
+      "description": "Triturar a hidrocortisona a pó fino. Dispersar em pequena porção do xarope simples.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "production.formulationstep",
+    "pk": "30000000-0000-0000-0000-000000000028",
+    "fields": {
+      "formulation": "10000000-0000-0000-0000-000000000010",
+      "step_number": 3,
+      "title": "Misturar e completar",
+      "description": "Incorporar o gel suspensor e o restante xarope. Completar com água purificada q.b.p. 100 mL.",
+      "estimated_duration": "00:05:00",
+      "is_deleted": false,
+      "deleted_at": null,
+      "created_by": null,
+      "updated_by": null,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  }
+]

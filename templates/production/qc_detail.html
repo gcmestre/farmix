@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Quality Control Results" %} - Farmix{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Quality Control Results" %}</h1>
+        <p class="mt-1 text-sm text-gray-500">{{ batch.batch_number }} &middot; {{ batch.formulation.name }}</p>
+    </div>
+    <div>
+        {% if qc.passed %}
+        <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-3 py-1 rounded-full">{% trans "Passed" %}</span>
+        {% else %}
+        <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-3 py-1 rounded-full">{% trans "Failed" %}</span>
+        {% endif %}
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Organoleptic -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Organoleptic Checks" %}</h5>
+        <dl class="grid grid-cols-1 gap-4">
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Appearance" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ qc.appearance }}</dd>
+            </div>
+            {% if qc.odor %}
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Odor" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ qc.odor }}</dd>
+            </div>
+            {% endif %}
+            {% if qc.texture %}
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Texture" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ qc.texture }}</dd>
+            </div>
+            {% endif %}
+        </dl>
+    </div>
+
+    <!-- Measurements -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Measurements" %}</h5>
+        <dl class="grid grid-cols-1 gap-4">
+            {% if qc.ph_value %}
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "pH Value" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ qc.ph_value|floatformat:"-2" }}</dd>
+            </div>
+            {% endif %}
+            {% if qc.expected_weight %}
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Expected Weight" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ qc.expected_weight|floatformat:"-3" }}</dd>
+            </div>
+            {% endif %}
+            {% if qc.actual_weight %}
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Actual Weight" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ qc.actual_weight|floatformat:"-3" }}</dd>
+            </div>
+            {% endif %}
+            {% if qc.weight_deviation_pct %}
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Weight Deviation" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ qc.weight_deviation_pct|floatformat:"-2" }}%</dd>
+            </div>
+            {% endif %}
+        </dl>
+    </div>
+</div>
+
+{% if qc.observations %}
+<div class="mt-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
+    <h5 class="mb-2 text-lg font-semibold text-gray-900">{% trans "Observations" %}</h5>
+    <p class="text-sm text-gray-700">{{ qc.observations }}</p>
+</div>
+{% endif %}
+
+<div class="mt-6 text-sm text-gray-500">
+    {% trans "Performed by" %}: {{ qc.performed_by.get_full_name|default:"-" }} &middot; {{ qc.performed_at|date:"d/m/Y H:i" }}
+</div>
+
+<div class="mt-4">
+    <a href="{% url 'production:batch_detail' batch.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+        &larr; {% trans "Back to Batch" %}
+    </a>
+</div>
+{% endblock %}

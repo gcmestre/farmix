@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{% trans "Complaints" %} - Farmix{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Complaints" %}</h1>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        {% if user|can_manage:"orders" %}
+        <a href="{% url 'orders:complaint_create' %}" class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+            <svg class="w-3.5 h-3.5 me-2" fill="none" viewBox="0 0 18 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            </svg>
+            {% trans "New Complaint" %}
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="flex flex-wrap gap-2 mb-4">
+    <a href="{% url 'orders:complaint_list' %}" class="px-4 py-2 text-sm font-medium rounded-lg {% if not current_status %}text-white bg-blue-700{% else %}text-gray-900 bg-white border border-gray-200 hover:bg-gray-100{% endif %}">{% trans "All" %}</a>
+    {% for value, label in status_choices %}
+    <a href="?status={{ value }}" class="px-4 py-2 text-sm font-medium rounded-lg {% if current_status == value %}text-white bg-blue-700{% else %}text-gray-900 bg-white border border-gray-200 hover:bg-gray-100{% endif %}">{{ label }}</a>
+    {% endfor %}
+</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3">{% trans "Date" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Complainant" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Order" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Batch" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Status" %}</th>
+                <th scope="col" class="px-6 py-3 text-right">{% trans "Actions" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for complaint in complaints %}
+            <tr class="bg-white border-b hover:bg-gray-50">
+                <td class="px-6 py-4">{{ complaint.complaint_date|date:"d/m/Y" }}</td>
+                <td class="px-6 py-4 font-medium text-gray-900">{{ complaint.complainant_name }}</td>
+                <td class="px-6 py-4">{{ complaint.order.order_number|default:"-" }}</td>
+                <td class="px-6 py-4">{{ complaint.batch.batch_number|default:"-" }}</td>
+                <td class="px-6 py-4">
+                    <span class="text-xs font-medium px-2.5 py-0.5 rounded-full
+                        {% if complaint.status == 'open' %}bg-yellow-100 text-yellow-800
+                        {% elif complaint.status == 'investigating' %}bg-blue-100 text-blue-800
+                        {% elif complaint.status == 'resolved' %}bg-green-100 text-green-800
+                        {% else %}bg-gray-100 text-gray-800{% endif %}">
+                        {{ complaint.get_status_display }}
+                    </span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="{% url 'orders:complaint_detail' complaint.pk %}" class="text-blue-600 hover:text-blue-800">{% trans "View" %}</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr class="bg-white"><td colspan="6" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No complaints found." %}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

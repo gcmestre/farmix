@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{% trans "Formulations" %} - Farmix{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Formulations" %}</h1>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        {% if user|has_role:"admin" or user|has_role:"pharmacist" %}
+        <a href="{% url 'production:formulation_create' %}" class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+            <svg class="w-3.5 h-3.5 me-2" fill="none" viewBox="0 0 18 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            </svg>
+            {% trans "New Formulation" %}
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3">{% trans "Code" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Name" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Form" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Shelf Life" %}</th>
+                <th scope="col" class="px-6 py-3 text-right">{% trans "Actions" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for f in formulations %}
+            <tr class="bg-white border-b hover:bg-gray-50">
+                <td class="px-6 py-4 font-mono font-medium"><a href="{% url 'production:formulation_detail' f.pk %}" class="text-blue-600 hover:text-blue-800">{{ f.code }}</a></td>
+                <td class="px-6 py-4 text-gray-900">{{ f.name }}</td>
+                <td class="px-6 py-4">{{ f.pharmaceutical_form }}</td>
+                <td class="px-6 py-4">{{ f.shelf_life_days }} {% trans "days" %}</td>
+                <td class="px-6 py-4 text-right"><a href="{% url 'production:formulation_detail' f.pk %}" class="text-blue-600 hover:text-blue-800">{% trans "View" %}</a></td>
+            </tr>
+            {% empty %}
+            <tr class="bg-white"><td colspan="5" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No formulations found." %}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

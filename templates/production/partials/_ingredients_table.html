@@ -1,0 +1,33 @@
+{% load i18n core_tags %}
+<table class="w-full text-sm text-left text-gray-500">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+            <th scope="col" class="px-4 py-3">{% trans "Material" %}</th>
+            <th scope="col" class="px-4 py-3 text-right">{% trans "Qty" %}</th>
+            <th scope="col" class="px-4 py-3">{% trans "Unit" %}</th>
+            <th scope="col" class="px-4 py-3 text-center">{% trans "Active" %}</th>
+            <th scope="col" class="px-4 py-3 text-center">{% trans "Order" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ing in ingredients %}
+        <tr class="bg-white border-b border-gray-200">
+            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{ ing.raw_material.name }}</td>
+            <td class="px-4 py-3 text-right">{{ ing.quantity|floatformat:"-4" }}</td>
+            <td class="px-4 py-3">{{ ing.unit }}</td>
+            <td class="px-4 py-3 text-center">
+                {% if ing.is_active_ingredient %}
+                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">{% trans "Yes" %}</span>
+                {% else %}
+                <span class="text-gray-400">-</span>
+                {% endif %}
+            </td>
+            <td class="px-4 py-3 text-center">{{ ing.order_of_addition }}</td>
+        </tr>
+        {% empty %}
+        <tr class="bg-white">
+            <td colspan="5" class="px-4 py-4 text-center text-sm text-gray-500">{% trans "No ingredients added." %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

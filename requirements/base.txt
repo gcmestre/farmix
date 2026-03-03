@@ -1,0 +1,15 @@
+Django>=5.1,<5.2
+psycopg[binary]>=3.1,<4
+django-guardian>=2.4,<3
+django-fsm-2>=3.0,<4
+django-auditlog>=3.0,<4
+django-htmx>=1.17,<2
+django-widget-tweaks>=1.5,<2
+django-filter>=24.0
+django-storages[azure]>=1.14,<2
+django-tailwind>=3.8,<4
+whitenoise>=6.5,<7
+weasyprint>=62.0
+gunicorn>=22.0,<23
+django-environ>=0.11,<1
+django-axes>=7.0,<8

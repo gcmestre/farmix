@@ -1,0 +1,80 @@
+{% load i18n %}
+
+<div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+    <!-- Scale factor badge -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+        <h5 class="text-lg font-semibold text-gray-900">{% trans "Calculated Quantities" %}</h5>
+        <div class="flex gap-3 mt-2 sm:mt-0">
+            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                {{ result.desired_quantity|floatformat:"-3" }} {{ result.desired_unit }}
+            </span>
+            <span class="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
+                {% trans "Scale" %}: {{ result.scale_factor|floatformat:"-4" }}x
+            </span>
+        </div>
+    </div>
+
+    <!-- Results table -->
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-4 py-3">{% trans "Material" %}</th>
+                    <th scope="col" class="px-4 py-3 text-right">{% trans "Base Qty" %} ({{ result.base_quantity|floatformat:"-3" }}{{ result.base_unit }})</th>
+                    <th scope="col" class="px-4 py-3 text-right">{% trans "Calculated Qty" %}</th>
+                    <th scope="col" class="px-4 py-3">{% trans "Unit" %}</th>
+                    <th scope="col" class="px-4 py-3 text-center">{% trans "Active" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in result.ingredients %}
+                <tr class="bg-white border-b border-gray-200 {% if item.is_active %}font-semibold text-gray-900{% endif %}">
+                    <td class="px-4 py-3 whitespace-nowrap">
+                        {{ item.raw_material.name }}
+                    </td>
+                    <td class="px-4 py-3 text-right text-gray-400">
+                        {{ item.original_quantity|floatformat:"-4" }}
+                    </td>
+                    <td class="px-4 py-3 text-right text-lg {% if item.is_active %}text-blue-700{% else %}text-gray-900{% endif %}">
+                        {{ item.calculated_quantity|floatformat:"-4" }}
+                    </td>
+                    <td class="px-4 py-3">{{ item.unit }}</td>
+                    <td class="px-4 py-3 text-center">
+                        {% if item.is_active %}
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">{% trans "Yes" %}</span>
+                        {% else %}
+                        <span class="text-gray-400">-</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr class="bg-gray-50 font-semibold text-gray-900">
+                    <td class="px-4 py-3">{% trans "Total" %}</td>
+                    <td class="px-4 py-3 text-right">{{ result.base_quantity|floatformat:"-3" }}</td>
+                    <td class="px-4 py-3 text-right text-lg">{{ result.total_weight|floatformat:"-3" }}</td>
+                    <td class="px-4 py-3">{{ result.base_unit }}</td>
+                    <td class="px-4 py-3"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- Info box -->
+    <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div class="flex">
+            <svg class="flex-shrink-0 w-5 h-5 text-blue-700 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            <div class="ml-3 text-sm text-blue-700">
+                <p>
+                    {% blocktrans with base=result.base_quantity unit=result.base_unit desired=result.desired_quantity factor=result.scale_factor %}
+                        Base formula: {{ base }}{{ unit }} &rarr; Desired: {{ desired }}{{ unit }} (factor: {{ factor }}x).
+                        All quantities have been proportionally scaled.
+                    {% endblocktrans %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

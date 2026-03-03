@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Batch Cost" %} - Farmix{% endblock %}
+
+{% block content %}
+<div class="mb-6">
+    <h1 class="text-2xl font-bold text-gray-900">{% trans "Batch Cost" %}</h1>
+    <p class="text-sm text-gray-500 mt-1">{{ batch.batch_number }} &middot; {{ batch.formulation.name }}</p>
+</div>
+
+<div class="max-w-2xl">
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow mb-6">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Raw Material Cost (Auto-calculated)" %}</h5>
+        <p class="text-2xl font-bold text-gray-900">&euro;{{ raw_material_cost|floatformat:2 }}</p>
+        <p class="text-xs text-gray-500 mt-1">{% trans "Based on lot cost-per-unit and quantities used" %}</p>
+    </div>
+
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Additional Costs" %}</h5>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            {% include "components/_form_field.html" %}
+            {% endfor %}
+            <div class="flex gap-3 pt-4">
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                    {% trans "Calculate Total" %}
+                </button>
+                <a href="{% url 'production:batch_detail' batch.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                    {% trans "Cancel" %}
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

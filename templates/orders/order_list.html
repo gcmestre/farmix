@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{% trans "Orders" %} - Farmix{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Orders" %}</h1>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        {% if user|has_role:"admin" or user|has_role:"pharmacist" %}
+        <a href="{% url 'orders:order_export_csv' %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+            {% trans "Export CSV" %}
+        </a>
+        {% endif %}
+        {% if user|can_manage:"orders" %}
+        <a href="{% url 'orders:order_create' %}" class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+            <svg class="w-3.5 h-3.5 me-2" fill="none" viewBox="0 0 18 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            </svg>
+            {% trans "New Order" %}
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Filters -->
+<form method="get" class="mb-4 grid grid-cols-1 sm:grid-cols-4 gap-3"
+      hx-get="{% url 'orders:order_list' %}" hx-target="#order-table" hx-trigger="change" hx-push-url="true">
+    {% for field in filter.form %}
+    <div>
+        <label class="block text-xs font-medium text-gray-500 mb-1">{{ field.label }}</label>
+        {{ field }}
+    </div>
+    {% endfor %}
+</form>
+
+<div id="order-table">
+    {% include "orders/partials/_order_table.html" %}
+</div>
+{% endblock %}

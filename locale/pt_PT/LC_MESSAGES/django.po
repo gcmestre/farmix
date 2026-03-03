@@ -1,0 +1,2167 @@
+# Farmix - Portuguese (Portugal) translations
+# Copyright (C) 2026 Farmix
+# This file is distributed under the same license as the Farmix package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-03 14:06+0000\n"
+"PO-Revision-Date: 2026-02-13 12:10+0000\n"
+"Last-Translator: Farmix Team\n"
+"Language-Team: Portuguese (Portugal)\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Core"
+msgstr "Núcleo"
+
+msgid "Encrypted CharField"
+msgstr ""
+
+msgid "Encrypted TextField"
+msgstr ""
+
+msgid "First name"
+msgstr "Primeiro nome"
+
+msgid "Last name"
+msgstr "Apelido"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Role"
+msgstr "Função"
+
+msgid "Phone"
+msgstr "Telefone"
+
+msgid "Professional license"
+msgstr "Cédula profissional"
+
+msgid "A user with this email already exists."
+msgstr "Já existe um utilizador com este e-mail."
+
+#, fuzzy
+#| msgid "Pharmacy"
+msgid "Pharmacy name"
+msgstr "Farmácia"
+
+#, fuzzy
+#| msgid "Pharmacy"
+msgid "Pharmacy email"
+msgstr "Farmácia"
+
+msgid "NIF"
+msgstr "NIF"
+
+#, fuzzy
+#| msgid "A user with this email already exists."
+msgid "A user with this email already belongs to this pharmacy."
+msgstr "Já existe um utilizador com este e-mail."
+
+#, fuzzy
+#| msgid "A user with this email already exists."
+msgid "An invitation for this email is already pending."
+msgstr "Já existe um utilizador com este e-mail."
+
+msgid "created at"
+msgstr "criado em"
+
+msgid "updated at"
+msgstr "atualizado em"
+
+msgid "created by"
+msgstr "criado por"
+
+msgid "updated by"
+msgstr "atualizado por"
+
+msgid "deleted"
+msgstr "eliminado"
+
+msgid "deleted at"
+msgstr "eliminado em"
+
+msgid "name"
+msgstr "nome"
+
+msgid "slug"
+msgstr ""
+
+#, fuzzy
+#| msgid "CAS number"
+msgid "ANF number"
+msgstr "número CAS"
+
+msgid "address"
+msgstr "morada"
+
+msgid "phone"
+msgstr "telefone"
+
+msgid "email"
+msgstr "e-mail"
+
+msgid "technical director"
+msgstr ""
+
+msgid "active"
+msgstr "ativo"
+
+#, fuzzy
+#| msgid "name"
+msgid "DPO name"
+msgstr "nome"
+
+#, fuzzy
+#| msgid "email"
+msgid "DPO email"
+msgstr "e-mail"
+
+#, fuzzy
+#| msgid "phone"
+msgid "DPO phone"
+msgstr "telefone"
+
+#, fuzzy
+#| msgid "Pharmacy"
+msgid "pharmacy"
+msgstr "Farmácia"
+
+#, fuzzy
+#| msgid "Pharmacist"
+msgid "pharmacies"
+msgstr "Farmacêutico"
+
+msgid "Administrator"
+msgstr "Administrador"
+
+msgid "Pharmacist"
+msgstr "Farmacêutico"
+
+msgid "Lab Technician"
+msgstr "Técnico de Laboratório"
+
+msgid "Front Desk"
+msgstr "Receção"
+
+msgid "Viewer"
+msgstr "Visualizador"
+
+msgid "role"
+msgstr "função"
+
+msgid "professional license"
+msgstr "cédula profissional"
+
+msgid "Infarmed professional license number"
+msgstr "Número de cédula profissional Infarmed"
+
+msgid "license verified"
+msgstr "licença verificada"
+
+msgid "license expiry date"
+msgstr "data de validade da licença"
+
+msgid "preferred language"
+msgstr "idioma preferido"
+
+msgid "user profile"
+msgstr "perfil de utilizador"
+
+msgid "user profiles"
+msgstr "perfis de utilizador"
+
+msgid "token"
+msgstr ""
+
+#, fuzzy
+#| msgid "validated by"
+msgid "invited by"
+msgstr "validado por"
+
+#, fuzzy
+#| msgid "created at"
+msgid "accepted at"
+msgstr "criado em"
+
+#, fuzzy
+#| msgid "expiry date"
+msgid "expires at"
+msgstr "data de validade"
+
+#, fuzzy
+#| msgid "Administration"
+msgid "invitation"
+msgstr "Administração"
+
+#, fuzzy
+#| msgid "Administration"
+msgid "invitations"
+msgstr "Administração"
+
+msgid "street"
+msgstr "rua"
+
+msgid "street (line 2)"
+msgstr "rua (linha 2)"
+
+msgid "postal code"
+msgstr "código postal"
+
+msgid "city"
+msgstr "cidade"
+
+msgid "district"
+msgstr "distrito"
+
+msgid "country"
+msgstr "país"
+
+msgid "addresses"
+msgstr "moradas"
+
+msgid "Create"
+msgstr "Criar"
+
+msgid "Update"
+msgstr "Atualizar"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "View"
+msgstr "Ver"
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Anonymize"
+msgstr "Anonimizar"
+
+msgid "timestamp"
+msgstr "data e hora"
+
+msgid "action"
+msgstr "ação"
+
+msgid "model"
+msgstr "modelo"
+
+msgid "object ID"
+msgstr "ID do objeto"
+
+msgid "changes"
+msgstr "alterações"
+
+msgid "IP address"
+msgstr "endereço IP"
+
+msgid "audit log"
+msgstr "registo de auditoria"
+
+msgid "audit logs"
+msgstr "registos de auditoria"
+
+msgid "Data Processing"
+msgstr "Tratamento de Dados"
+
+msgid "Marketing"
+msgstr "Marketing"
+
+msgid "Third Party Sharing"
+msgstr "Partilha com Terceiros"
+
+msgid "Research"
+msgstr "Investigação"
+
+msgid "Consent"
+msgstr "Consentimento"
+
+msgid "Contract Performance"
+msgstr "Execução de Contrato"
+
+msgid "Legal Obligation"
+msgstr "Obrigação Legal"
+
+msgid "Legitimate Interest"
+msgstr "Interesse Legítimo"
+
+msgid "purpose"
+msgstr "finalidade"
+
+msgid "legal basis"
+msgstr "base legal"
+
+msgid "granted at"
+msgstr "concedido em"
+
+msgid "revoked at"
+msgstr "revogado em"
+
+msgid "description"
+msgstr "descrição"
+
+msgid "consent"
+msgstr "consentimento"
+
+msgid "consents"
+msgstr "consentimentos"
+
+#, python-format
+msgid "File extension '%(ext)s' is not allowed. Allowed: %(allowed)s"
+msgstr ""
+
+#, python-format
+msgid "File size %(size).1f MB exceeds the maximum of %(max).0f MB."
+msgstr ""
+
+#, python-format
+msgid "File type '%(type)s' is not allowed. Allowed: %(allowed)s"
+msgstr ""
+
+#, fuzzy
+#| msgid "Welcome to Farmix"
+msgid "Registration successful! Welcome to Farmix."
+msgstr "Bem-vindo ao Farmix"
+
+msgid "Register"
+msgstr ""
+
+msgid "Dashboard"
+msgstr "Painel"
+
+msgid "Profile updated successfully."
+msgstr "Perfil atualizado com sucesso."
+
+msgid "My Profile"
+msgstr "O Meu Perfil"
+
+msgid "Users"
+msgstr "Utilizadores"
+
+msgid "User created successfully."
+msgstr "Utilizador criado com sucesso."
+
+msgid "Create User"
+msgstr "Criar Utilizador"
+
+msgid "User updated successfully."
+msgstr "Utilizador atualizado com sucesso."
+
+msgid "Edit User"
+msgstr "Editar Utilizador"
+
+msgid "You cannot deactivate your own account."
+msgstr ""
+
+#, fuzzy
+#| msgid "active"
+msgid "activated"
+msgstr "ativo"
+
+#, fuzzy
+#| msgid "active"
+msgid "deactivated"
+msgstr "ativo"
+
+#, python-format
+msgid "User %(name)s has been %(status)s."
+msgstr ""
+
+msgid "You cannot remove your own account."
+msgstr ""
+
+#, python-format
+msgid "User %(name)s has been removed from the pharmacy."
+msgstr ""
+
+#, python-format
+msgid "You've been invited to join %(pharmacy)s on Farmix"
+msgstr ""
+
+#, python-format
+msgid "You've been invited to join %(pharmacy)s. Visit %(link)s to register."
+msgstr ""
+
+#, python-format
+msgid "Invitation sent to %(email)s."
+msgstr ""
+
+msgid ""
+"Invitation created but email could not be sent. Share the link manually."
+msgstr ""
+
+#, fuzzy
+#| msgid "Edit User"
+msgid "Invite User"
+msgstr "Editar Utilizador"
+
+#, fuzzy
+#| msgid "Institution"
+msgid "Invitations"
+msgstr "Instituição"
+
+#, python-format
+msgid "Invitation to %(email)s has been revoked."
+msgstr ""
+
+msgid "This invitation has already been accepted."
+msgstr ""
+
+#, python-format
+msgid "Invitation resent to %(email)s."
+msgstr ""
+
+#, python-format
+msgid "Could not send email. Share the link manually: %(link)s"
+msgstr ""
+
+msgid "You are already logged in. Log out first to accept an invitation."
+msgstr ""
+
+msgid "This invitation has expired. Please ask for a new one."
+msgstr ""
+
+#, fuzzy
+#| msgid "A user with this email already exists."
+msgid "An account with this email already exists. Please log in."
+msgstr "Já existe um utilizador com este e-mail."
+
+#, python-format
+msgid "Welcome to %(pharmacy)s!"
+msgstr ""
+
+#, fuzzy
+#| msgid "Weight Deviation"
+msgid "Accept Invitation"
+msgstr "Desvio de Peso"
+
+msgid "Audit Log"
+msgstr "Registo de Auditoria"
+
+msgid "Inventory"
+msgstr "Inventário"
+
+msgid "Quantity"
+msgstr "Quantidade"
+
+msgid "Positive to add, negative to subtract."
+msgstr "Positivo para adicionar, negativo para subtrair."
+
+msgid "Notes"
+msgstr "Notas"
+
+msgid "notes"
+msgstr "notas"
+
+msgid "supplier"
+msgstr "fornecedor"
+
+msgid "suppliers"
+msgstr "fornecedores"
+
+msgid "code"
+msgstr "código"
+
+msgid "CAS number"
+msgstr "número CAS"
+
+msgid "Chemical Abstracts Service"
+msgstr "Chemical Abstracts Service"
+
+msgid "default unit"
+msgstr "unidade predefinida"
+
+msgid "minimum stock"
+msgstr "stock mínimo"
+
+msgid "reorder point"
+msgstr "ponto de reposição"
+
+msgid "preferred supplier"
+msgstr "fornecedor preferencial"
+
+msgid "controlled substance"
+msgstr "substância controlada"
+
+msgid "pharmacopeia reference"
+msgstr "referência farmacopeia"
+
+msgid "e.g., FP X, Ph.Eur., USP"
+msgstr "ex.: FP X, Ph.Eur., USP"
+
+msgid "raw material"
+msgstr "matéria-prima"
+
+msgid "raw materials"
+msgstr "matérias-primas"
+
+msgid "lot number"
+msgstr "número de lote"
+
+msgid "initial quantity"
+msgstr "quantidade inicial"
+
+msgid "current quantity"
+msgstr "quantidade atual"
+
+msgid "received date"
+msgstr "data de receção"
+
+msgid "expiry date"
+msgstr "data de validade"
+
+msgid "certificate of analysis"
+msgstr "certificado de análise"
+
+msgid "cost per unit"
+msgstr "custo por unidade"
+
+msgid "Cost per base unit (e.g., per gram, per mL)"
+msgstr "Custo por unidade base (ex.: por grama, por mL)"
+
+msgid "quarantined"
+msgstr "em quarentena"
+
+msgid "exhausted"
+msgstr "esgotado"
+
+msgid "lot"
+msgstr "lote"
+
+msgid "lots"
+msgstr "lotes"
+
+msgid "Receipt"
+msgstr "Receção"
+
+msgid "Production Use"
+msgstr "Uso em Produção"
+
+msgid "Adjustment"
+msgstr "Ajuste"
+
+msgid "Disposal"
+msgstr "Eliminação"
+
+msgid "Return"
+msgstr "Devolução"
+
+msgid "type"
+msgstr "tipo"
+
+msgid "quantity"
+msgstr "quantidade"
+
+msgid "balance after"
+msgstr "saldo após"
+
+msgid "reference batch"
+msgstr "lote de referência"
+
+msgid "performed by"
+msgstr "realizado por"
+
+msgid "stock movement"
+msgstr "movimento de stock"
+
+msgid "stock movements"
+msgstr "movimentos de stock"
+
+msgid "regulation"
+msgstr "regulamentação"
+
+msgid "prohibited substance"
+msgstr "substância proibida"
+
+msgid "prohibited substances"
+msgstr "substâncias proibidas"
+
+msgid "Raw Materials"
+msgstr "Matérias-Primas"
+
+msgid "Material created."
+msgstr "Material criado."
+
+msgid "New Material"
+msgstr "Novo Material"
+
+msgid "Material updated."
+msgstr "Material atualizado."
+
+msgid "Edit Material"
+msgstr "Editar Material"
+
+msgid "Lots"
+msgstr "Lotes"
+
+msgid "Lot received."
+msgstr "Lote rececionado."
+
+msgid "Receive Lot"
+msgstr "Rececionar Lote"
+
+msgid "Stock adjusted."
+msgstr "Stock ajustado."
+
+msgid "Adjust Stock"
+msgstr "Ajustar Stock"
+
+msgid "Suppliers"
+msgstr "Fornecedores"
+
+msgid "Supplier created."
+msgstr "Fornecedor criado."
+
+msgid "New Supplier"
+msgstr "Novo Fornecedor"
+
+msgid "Supplier updated."
+msgstr "Fornecedor atualizado."
+
+msgid "Edit Supplier"
+msgstr "Editar Fornecedor"
+
+msgid "Inventory Alerts"
+msgstr "Alertas de Inventário"
+
+msgid "Stock Movements"
+msgstr "Movimentos de Stock"
+
+msgid "Prohibited Substances"
+msgstr "Substâncias Proibidas"
+
+msgid "Prohibited substance added."
+msgstr "Substância proibida adicionada."
+
+msgid "Add Prohibited Substance"
+msgstr "Adicionar Substância Proibida"
+
+msgid "Prohibited substance updated."
+msgstr "Substância proibida atualizada."
+
+msgid "Edit Prohibited Substance"
+msgstr "Editar Substância Proibida"
+
+msgid "Prohibited substance removed."
+msgstr "Substância proibida removida."
+
+msgid "This lot is not quarantined."
+msgstr "Este lote não está em quarentena."
+
+msgid "Lot released from quarantine."
+msgstr "Lote libertado da quarentena."
+
+msgid "Invoicing"
+msgstr "Faturação"
+
+msgid "Due Date"
+msgstr "Data de Vencimento"
+
+msgid "quote number"
+msgstr "número de orçamento"
+
+msgid "order"
+msgstr "encomenda"
+
+msgid "client"
+msgstr "cliente"
+
+msgid "valid until"
+msgstr "válido até"
+
+msgid "quote"
+msgstr "orçamento"
+
+msgid "quotes"
+msgstr "orçamentos"
+
+msgid "unit"
+msgstr "unidade"
+
+msgid "unit price"
+msgstr "preço unitário"
+
+msgid "IVA rate"
+msgstr "taxa de IVA"
+
+msgid "quote line"
+msgstr "linha de orçamento"
+
+msgid "quote lines"
+msgstr "linhas de orçamento"
+
+msgid "Draft"
+msgstr "Rascunho"
+
+msgid "Sent"
+msgstr "Enviada"
+
+msgid "Paid"
+msgstr "Paga"
+
+msgid "Overdue"
+msgstr "Vencida"
+
+msgid "Cancelled"
+msgstr "Cancelada"
+
+msgid "invoice number"
+msgstr "número de fatura"
+
+msgid "external ID"
+msgstr "ID externo"
+
+msgid "Sipharma ID"
+msgstr "ID Sipharma"
+
+msgid "provider"
+msgstr "fornecedor"
+
+msgid "status"
+msgstr "estado"
+
+msgid "due date"
+msgstr "data de vencimento"
+
+msgid "synced at"
+msgstr "sincronizado em"
+
+msgid "invoice"
+msgstr "fatura"
+
+msgid "invoices"
+msgstr "faturas"
+
+msgid "invoice line"
+msgstr "linha de fatura"
+
+msgid "invoice lines"
+msgstr "linhas de fatura"
+
+msgid "Quotes"
+msgstr "Orçamentos"
+
+msgid "Quote created."
+msgstr "Orçamento criado."
+
+msgid "New Quote"
+msgstr "Novo Orçamento"
+
+msgid "Line added."
+msgstr "Linha adicionada."
+
+msgid "Add Line"
+msgstr "Adicionar Linha"
+
+msgid "Invoice created from quote."
+msgstr "Fatura criada a partir do orçamento."
+
+msgid "Convert to Invoice"
+msgstr "Converter em Fatura"
+
+msgid "Invoices"
+msgstr "Faturas"
+
+msgid "Invoice created."
+msgstr "Fatura criada."
+
+msgid "New Invoice"
+msgstr "Nova Fatura"
+
+msgid "Invoice status updated."
+msgstr "Estado da fatura atualizado."
+
+msgid "Invalid action."
+msgstr "Ação inválida."
+
+msgid "Order #"
+msgstr "Encomenda #"
+
+msgid "Client"
+msgstr "Cliente"
+
+msgid "Status"
+msgstr "Estado"
+
+msgid "Priority"
+msgstr "Prioridade"
+
+msgid "Comment"
+msgstr "Comentário"
+
+msgid "Pharmacy"
+msgstr "Farmácia"
+
+msgid "Institution"
+msgstr "Instituição"
+
+msgid "Individual"
+msgstr "Particular"
+
+msgid "client type"
+msgstr "tipo de cliente"
+
+msgid "Tax identification number"
+msgstr "Número de identificação fiscal"
+
+msgid "Infarmed code"
+msgstr "Código Infarmed"
+
+msgid "clients"
+msgstr "clientes"
+
+msgid "New Request"
+msgstr "Novo Pedido"
+
+msgid "Waiting for Quote"
+msgstr "A Aguardar Orçamento"
+
+msgid "Waiting for Recipe"
+msgstr "A Aguardar Receita"
+
+msgid "Ready for Production"
+msgstr "Pronto para Produção"
+
+msgid "In Production"
+msgstr "Em Produção"
+
+msgid "Ready"
+msgstr "Pronto"
+
+msgid "Complete"
+msgstr "Concluir"
+
+msgid "Error"
+msgstr "Erro"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "In Person"
+msgstr "Presencial"
+
+msgid "Low"
+msgstr "Baixa"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "High"
+msgstr "Alta"
+
+msgid "Urgent"
+msgstr "Urgente"
+
+msgid "order number"
+msgstr "número de encomenda"
+
+msgid "source"
+msgstr "origem"
+
+msgid "priority"
+msgstr "prioridade"
+
+msgid "assigned to"
+msgstr "atribuído a"
+
+msgid "prescription file"
+msgstr "ficheiro de receita"
+
+msgid "orders"
+msgstr "encomendas"
+
+msgid "formulation"
+msgstr "formulação"
+
+msgid "order item"
+msgstr "item de encomenda"
+
+msgid "order items"
+msgstr "itens de encomenda"
+
+msgid "from status"
+msgstr "do estado"
+
+msgid "to status"
+msgstr "para o estado"
+
+msgid "changed by"
+msgstr "alterado por"
+
+msgid "comment"
+msgstr "comentário"
+
+msgid "order status log"
+msgstr "registo de estado da encomenda"
+
+msgid "order status logs"
+msgstr "registos de estado da encomenda"
+
+msgid "Open"
+msgstr ""
+
+msgid "Investigating"
+msgstr ""
+
+msgid "Resolved"
+msgstr ""
+
+#, fuzzy
+#| msgid "Close"
+msgid "Closed"
+msgstr "Fechar"
+
+msgid "batch"
+msgstr "lote"
+
+#, fuzzy
+#| msgid "patient name"
+msgid "complainant name"
+msgstr "nome do paciente"
+
+#, fuzzy
+#| msgid "completed at"
+msgid "complaint date"
+msgstr "concluído em"
+
+#, fuzzy
+#| msgid "Administration"
+msgid "investigation"
+msgstr "Administração"
+
+msgid "corrective action"
+msgstr ""
+
+#, fuzzy
+#| msgid "created by"
+msgid "resolved by"
+msgstr "criado por"
+
+#, fuzzy
+#| msgid "revoked at"
+msgid "resolved at"
+msgstr "revogado em"
+
+#, fuzzy
+#| msgid "completed at"
+msgid "complaint"
+msgstr "concluído em"
+
+#, fuzzy
+#| msgid "completed at"
+msgid "complaints"
+msgstr "concluído em"
+
+msgid "Orders"
+msgstr "Encomendas"
+
+msgid "Order created successfully."
+msgstr "Encomenda criada com sucesso."
+
+msgid "New Order"
+msgstr "Nova Encomenda"
+
+msgid "Order updated successfully."
+msgstr "Encomenda atualizada com sucesso."
+
+msgid "Edit Order"
+msgstr "Editar Encomenda"
+
+msgid "Order status updated."
+msgstr "Estado da encomenda atualizado."
+
+msgid "Clients"
+msgstr "Clientes"
+
+msgid "Client created successfully."
+msgstr "Cliente criado com sucesso."
+
+msgid "New Client"
+msgstr "Novo Cliente"
+
+msgid "Client updated successfully."
+msgstr "Cliente atualizado com sucesso."
+
+msgid "Edit Client"
+msgstr "Editar Cliente"
+
+#, fuzzy
+#| msgid "Complete"
+msgid "Complaints"
+msgstr "Concluir"
+
+#, fuzzy
+#| msgid "No movements recorded."
+msgid "Complaint recorded."
+msgstr "Nenhum movimento registado."
+
+#, fuzzy
+#| msgid "New Client"
+msgid "New Complaint"
+msgstr "Novo Cliente"
+
+msgid "Complaint Detail"
+msgstr ""
+
+#, fuzzy
+#| msgid "current quantity"
+msgid "Desired quantity"
+msgstr "quantidade atual"
+
+msgid "pharmaceutical form"
+msgstr "forma farmacêutica"
+
+msgid "e.g., cream, capsule, solution"
+msgstr "ex.: creme, cápsula, solução"
+
+msgid "route of administration"
+msgstr "via de administração"
+
+msgid "e.g., oral, topical, nasal"
+msgstr "ex.: oral, tópica, nasal"
+
+msgid "dosage instructions"
+msgstr "posologia"
+
+msgid "multi-stage"
+msgstr "multi-fase"
+
+msgid "shelf life (days)"
+msgstr "prazo de validade (dias)"
+
+msgid "storage conditions"
+msgstr "condições de armazenamento"
+
+#, fuzzy
+#| msgid "quantity"
+msgid "base quantity"
+msgstr "quantidade"
+
+msgid "Base quantity the ingredient amounts refer to (e.g., 100 for 100g)"
+msgstr "Quantidade base a que os ingredientes se referem (ex.: 100 para 100g)"
+
+msgid "base unit"
+msgstr "unidade base"
+
+msgid "Unit of the base quantity (e.g., g, mL)"
+msgstr "Unidade da quantidade base (ex.: g, mL)"
+
+msgid "formulations"
+msgstr "formulações"
+
+msgid "active ingredient"
+msgstr "substância ativa"
+
+msgid "order of addition"
+msgstr "ordem de adição"
+
+msgid "formulation ingredient"
+msgstr "ingrediente da formulação"
+
+msgid "formulation ingredients"
+msgstr "ingredientes da formulação"
+
+msgid "step number"
+msgstr "número do passo"
+
+msgid "title"
+msgstr "título"
+
+msgid "estimated duration"
+msgstr "duração estimada"
+
+msgid "formulation step"
+msgstr "passo da formulação"
+
+msgid "formulation steps"
+msgstr "passos da formulação"
+
+msgid "doctor name"
+msgstr "nome do médico"
+
+msgid "doctor license"
+msgstr "cédula do médico"
+
+msgid "patient name"
+msgstr "nome do paciente"
+
+msgid "patient NIF"
+msgstr "NIF do paciente"
+
+msgid "patient address"
+msgstr "morada do utente"
+
+msgid "validated by"
+msgstr "validado por"
+
+msgid "prescription"
+msgstr "receita"
+
+msgid "prescriptions"
+msgstr "receitas"
+
+msgid "Planned"
+msgstr "Planeado"
+
+msgid "In Progress"
+msgstr "Em Curso"
+
+msgid "Quality Check"
+msgstr "Controlo de Qualidade"
+
+msgid "Approved"
+msgstr "Aprovado"
+
+msgid "Rejected"
+msgstr "Rejeitado"
+
+msgid "batch number"
+msgstr "número de lote"
+
+msgid "produced by"
+msgstr "produzido por"
+
+msgid "verified by"
+msgstr "verificado por"
+
+msgid "production parameters"
+msgstr "parâmetros de produção"
+
+msgid "quantity produced"
+msgstr "quantidade produzida"
+
+msgid "Batch-level override; falls back to formulation"
+msgstr "Substituição ao nível do lote; utiliza formulação por defeito"
+
+msgid "special precautions"
+msgstr "precauções especiais"
+
+msgid "label generated at"
+msgstr "rótulo gerado em"
+
+msgid "production batch"
+msgstr "lote de produção"
+
+msgid "production batches"
+msgstr "lotes de produção"
+
+msgid "step"
+msgstr "passo"
+
+msgid "started at"
+msgstr "iniciado em"
+
+msgid "completed at"
+msgstr "concluído em"
+
+msgid "observations"
+msgstr "observações"
+
+msgid "parameters"
+msgstr "parâmetros"
+
+msgid "production step log"
+msgstr "registo de passo de produção"
+
+msgid "production step logs"
+msgstr "registos de passos de produção"
+
+msgid "quantity used"
+msgstr "quantidade utilizada"
+
+msgid "batch material usage"
+msgstr "utilização de material do lote"
+
+msgid "appearance"
+msgstr "aspeto"
+
+msgid "odor"
+msgstr "odor"
+
+msgid "texture"
+msgstr "textura"
+
+msgid "pH value"
+msgstr "valor de pH"
+
+msgid "expected weight/volume"
+msgstr "peso/volume esperado"
+
+msgid "actual weight/volume"
+msgstr "peso/volume real"
+
+msgid "weight deviation (%)"
+msgstr "desvio de peso (%)"
+
+msgid "passed"
+msgstr "aprovado"
+
+msgid "performed at"
+msgstr "realizado em"
+
+msgid "quality control"
+msgstr "controlo de qualidade"
+
+msgid "quality controls"
+msgstr "controlos de qualidade"
+
+msgid "Passed"
+msgstr "Aprovado"
+
+msgid "Failed"
+msgstr "Reprovado"
+
+msgid "raw material cost"
+msgstr "custo de matérias-primas"
+
+msgid "packaging cost"
+msgstr "custo de embalagem"
+
+msgid "preparation fee"
+msgstr "honorários de preparação"
+
+msgid "total cost"
+msgstr "custo total"
+
+msgid "batch cost"
+msgstr "custo do lote"
+
+msgid "batch costs"
+msgstr "custos dos lotes"
+
+#, fuzzy
+#| msgid "patient name"
+msgid "equipment name"
+msgstr "nome do paciente"
+
+#, fuzzy
+#| msgid "step number"
+msgid "serial number"
+msgstr "número do passo"
+
+#, fuzzy
+#| msgid "Formulation updated."
+msgid "calibration date"
+msgstr "Formulação atualizada."
+
+msgid "next calibration date"
+msgstr ""
+
+#, fuzzy
+#| msgid "certificate of analysis"
+msgid "certificate file"
+msgstr "certificado de análise"
+
+msgid "equipment calibration"
+msgstr ""
+
+msgid "equipment calibrations"
+msgstr ""
+
+msgid "Production Batches"
+msgstr "Lotes de Produção"
+
+msgid "Batch created successfully."
+msgstr "Lote criado com sucesso."
+
+msgid "New Batch"
+msgstr "Novo Lote"
+
+msgid "Step completed."
+msgstr "Passo concluído."
+
+msgid "Only a pharmacist can approve a batch."
+msgstr "Apenas um farmacêutico pode aprovar um lote."
+
+msgid "Quality control must pass before approval."
+msgstr "O controlo de qualidade deve ser aprovado antes da aprovação."
+
+msgid "Quality control record is required before approval."
+msgstr "É necessário um registo de controlo de qualidade antes da aprovação."
+
+msgid "Batch status updated."
+msgstr "Estado do lote atualizado."
+
+msgid "Formulations"
+msgstr "Formulações"
+
+msgid "Formulation created."
+msgstr "Formulação criada."
+
+msgid "New Formulation"
+msgstr "Nova Formulação"
+
+msgid "Formulation updated."
+msgstr "Formulação atualizada."
+
+msgid "Edit Formulation"
+msgstr "Editar Formulação"
+
+msgid "Quality control record saved."
+msgstr "Registo de controlo de qualidade guardado."
+
+msgid "Quality Control"
+msgstr "Controlo de Qualidade"
+
+msgid "Quality Control Results"
+msgstr "Resultados do Controlo de Qualidade"
+
+#, python-format
+msgid "Batch Calculator — %(name)s"
+msgstr ""
+
+msgid "Batch cost calculated."
+msgstr "Custo do lote calculado."
+
+msgid "Batch Cost"
+msgstr "Custo do Lote"
+
+msgid "Equipment Calibrations"
+msgstr ""
+
+#, fuzzy
+#| msgid "Quality control record saved."
+msgid "Calibration record saved."
+msgstr "Registo de controlo de qualidade guardado."
+
+msgid "New Calibration Record"
+msgstr ""
+
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "Logout"
+msgstr "Terminar sessão"
+
+msgid "Dismiss"
+msgstr "Dispensar"
+
+msgid "Close"
+msgstr "Fechar"
+
+msgid "Immutable record of all system actions."
+msgstr "Registo imutável de todas as ações do sistema."
+
+msgid "Timestamp"
+msgstr "Data e Hora"
+
+msgid "User"
+msgstr "Utilizador"
+
+msgid "Action"
+msgstr "Ação"
+
+msgid "Model"
+msgstr "Modelo"
+
+msgid "Object"
+msgstr "Objeto"
+
+msgid "IP"
+msgstr "IP"
+
+msgid "No audit log entries found."
+msgstr "Nenhum registo de auditoria encontrado."
+
+msgid "Welcome to Farmix"
+msgstr "Bem-vindo ao Farmix"
+
+msgid "Pending Orders"
+msgstr "Encomendas Pendentes"
+
+msgid "View all"
+msgstr "Ver todos"
+
+msgid "Low Stock Alerts"
+msgstr "Alertas de Stock Baixo"
+
+msgid "Unpaid Invoices"
+msgstr "Faturas por Pagar"
+
+#, fuzzy
+#| msgid "Invoice created."
+msgid "Invitation link created!"
+msgstr "Fatura criada."
+
+msgid "Copied!"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+#, fuzzy
+#| msgid "Administration"
+msgid "Send Invitation"
+msgstr "Administração"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+#, fuzzy
+#| msgid "New Invoice"
+msgid "New Invitation"
+msgstr "Nova Fatura"
+
+#, fuzzy
+#| msgid "Back to Dashboard"
+msgid "Back to Users"
+msgstr "Voltar ao Painel"
+
+#, fuzzy
+#| msgid "validated by"
+msgid "Invited by"
+msgstr "validado por"
+
+#, fuzzy
+#| msgid "Expired"
+msgid "Expires"
+msgstr "Expirado"
+
+msgid "Actions"
+msgstr "Ações"
+
+msgid "Resend"
+msgstr ""
+
+msgid "Are you sure you want to revoke this invitation?"
+msgstr ""
+
+#, fuzzy
+#| msgid "revoked at"
+msgid "Revoke"
+msgstr "revogado em"
+
+#, fuzzy
+#| msgid "No items yet."
+msgid "No invitations yet."
+msgstr "Ainda sem itens."
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Change Password"
+msgstr "Alterar Palavra-passe"
+
+msgid "Add User"
+msgstr "Adicionar Utilizador"
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Deactivate this user?"
+msgstr ""
+
+#, fuzzy
+#| msgid "active"
+msgid "Deactivate"
+msgstr "ativo"
+
+#, fuzzy
+#| msgid "Active"
+msgid "Activate"
+msgstr "Ativo"
+
+msgid ""
+"Are you sure you want to remove this user from the pharmacy? This action "
+"cannot be undone."
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+#, fuzzy
+#| msgid "No orders found."
+msgid "No users found."
+msgstr "Nenhuma encomenda encontrada."
+
+msgid "All Orders"
+msgstr "Todas as Encomendas"
+
+msgid "Production"
+msgstr "Produção"
+
+msgid "Batches"
+msgstr "Lotes"
+
+msgid "Materials"
+msgstr "Materiais"
+
+msgid "Alerts"
+msgstr "Alertas"
+
+msgid "Administration"
+msgstr "Administração"
+
+msgid "Low Stock Materials"
+msgstr "Materiais com Stock Baixo"
+
+msgid "Code"
+msgstr "Código"
+
+msgid "Current"
+msgstr "Atual"
+
+msgid "Minimum"
+msgstr "Mínimo"
+
+msgid "No low stock alerts."
+msgstr "Sem alertas de stock baixo."
+
+msgid "Expiring Soon (30 days)"
+msgstr "A Expirar em Breve (30 dias)"
+
+msgid "Lot #"
+msgstr "Lote #"
+
+msgid "Material"
+msgstr "Material"
+
+msgid "Expiry"
+msgstr "Validade"
+
+msgid "Qty"
+msgstr "Qtd"
+
+msgid "No lots expiring soon."
+msgstr "Nenhum lote a expirar em breve."
+
+msgid "Expired Lots"
+msgstr "Lotes Expirados"
+
+msgid "Expired"
+msgstr "Expirado"
+
+msgid "No expired lots."
+msgstr "Nenhum lote expirado."
+
+msgid "Adjust"
+msgstr "Ajustar"
+
+msgid "Release this lot from quarantine?"
+msgstr "Libertar este lote da quarentena?"
+
+msgid "Release"
+msgstr "Libertar"
+
+msgid "Details"
+msgstr "Detalhes"
+
+msgid "Supplier"
+msgstr "Fornecedor"
+
+msgid "Initial Qty"
+msgstr "Qtd Inicial"
+
+msgid "Current Qty"
+msgstr "Qtd Atual"
+
+msgid "Received"
+msgstr "Rececionado"
+
+msgid "Movements"
+msgstr "Movimentos"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "By"
+msgstr "Por"
+
+msgid "No movements."
+msgstr "Sem movimentos."
+
+msgid "All"
+msgstr "Todos"
+
+msgid "Active"
+msgstr "Ativo"
+
+msgid "Quarantined"
+msgstr "Em Quarentena"
+
+msgid "Exhausted"
+msgstr "Esgotado"
+
+msgid "No lots found."
+msgstr "Nenhum lote encontrado."
+
+msgid "Controlled Substance"
+msgstr "Substância Controlada"
+
+msgid "Stock Info"
+msgstr "Informação de Stock"
+
+msgid "Current Stock"
+msgstr "Stock Atual"
+
+msgid "Minimum Stock"
+msgstr "Stock Mínimo"
+
+msgid "Reorder Point"
+msgstr "Ponto de Reposição"
+
+msgid "Preferred Supplier"
+msgstr "Fornecedor Preferencial"
+
+msgid "Active Lots"
+msgstr "Lotes Ativos"
+
+msgid "No active lots."
+msgstr "Sem lotes ativos."
+
+msgid "Recent Movements"
+msgstr "Movimentos Recentes"
+
+msgid "Lot"
+msgstr "Lote"
+
+msgid "Export CSV"
+msgstr "Exportar CSV"
+
+msgid "Search materials..."
+msgstr "Pesquisar materiais..."
+
+msgid "Unit"
+msgstr "Unidade"
+
+msgid "Stock"
+msgstr "Stock"
+
+msgid "Controlled"
+msgstr "Controlado"
+
+msgid "No materials found."
+msgstr "Nenhum material encontrado."
+
+msgid "No movements recorded."
+msgstr "Nenhum movimento registado."
+
+msgid "Deliberação 1985/2015"
+msgstr "Deliberação 1985/2015"
+
+msgid "Add Substance"
+msgstr "Adicionar Substância"
+
+msgid "CAS Number"
+msgstr "Número CAS"
+
+msgid "Regulation"
+msgstr "Regulamentação"
+
+msgid "Are you sure?"
+msgstr "Tem a certeza?"
+
+msgid "No prohibited substances registered."
+msgstr "Nenhuma substância proibida registada."
+
+msgid "Contact Info"
+msgstr "Informação de Contacto"
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "No"
+msgstr "Não"
+
+msgid "Address"
+msgstr "Morada"
+
+msgid "Recent Lots"
+msgstr "Lotes Recentes"
+
+msgid "No lots from this supplier."
+msgstr "Sem lotes deste fornecedor."
+
+msgid "Search suppliers..."
+msgstr "Pesquisar fornecedores..."
+
+msgid "No suppliers found."
+msgstr "Nenhum fornecedor encontrado."
+
+msgid "Lines"
+msgstr "Linhas"
+
+msgid "+ Add Line"
+msgstr "+ Adicionar Linha"
+
+msgid "Description"
+msgstr "Descrição"
+
+msgid "Price"
+msgstr "Preço"
+
+msgid "IVA"
+msgstr "IVA"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "No lines."
+msgstr "Sem linhas."
+
+msgid "Total (inc. IVA)"
+msgstr "Total (c/ IVA)"
+
+msgid "Status Actions"
+msgstr "Ações de Estado"
+
+msgid "Send"
+msgstr "Enviar"
+
+msgid "Mark Paid"
+msgstr "Marcar como Paga"
+
+msgid "Mark Overdue"
+msgstr "Marcar como Vencida"
+
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgid "Total w/ IVA"
+msgstr "Total c/ IVA"
+
+msgid "External ID"
+msgstr "ID Externo"
+
+msgid "Add"
+msgstr "Adicionar"
+
+msgid "Invoice #"
+msgstr "Fatura #"
+
+msgid "Order"
+msgstr "Encomenda"
+
+msgid "No invoices found."
+msgstr "Nenhuma fatura encontrada."
+
+msgid "Valid Until"
+msgstr "Válido Até"
+
+msgid "Quote #"
+msgstr "Orçamento #"
+
+msgid "No quotes found."
+msgstr "Nenhum orçamento encontrado."
+
+msgid "Convert Quote to Invoice"
+msgstr "Converter Orçamento em Fatura"
+
+msgid "Create Invoice"
+msgstr "Criar Fatura"
+
+msgid "Infarmed Code"
+msgstr "Código Infarmed"
+
+msgid "Recent Orders"
+msgstr "Encomendas Recentes"
+
+msgid "No orders yet."
+msgstr "Ainda sem encomendas."
+
+msgid "Search clients..."
+msgstr "Pesquisar clientes..."
+
+#, fuzzy
+#| msgid "Complete"
+msgid "Complaint"
+msgstr "Concluir"
+
+#, fuzzy
+#| msgid "Institution"
+msgid "Investigation"
+msgstr "Instituição"
+
+msgid "Corrective Action"
+msgstr ""
+
+#, fuzzy
+#| msgid "Complete"
+msgid "Complainant"
+msgstr "Concluir"
+
+#, fuzzy
+#| msgid "Batches"
+msgid "Batch"
+msgstr "Lotes"
+
+#, fuzzy
+#| msgid "performed by"
+msgid "Resolved by"
+msgstr "realizado por"
+
+#, fuzzy
+#| msgid "deleted at"
+msgid "Resolved at"
+msgstr "eliminado em"
+
+#, fuzzy
+#| msgid "Back to Batch"
+msgid "Back to list"
+msgstr "Voltar ao Lote"
+
+#, fuzzy
+#| msgid "No clients found."
+msgid "No complaints found."
+msgstr "Nenhum cliente encontrado."
+
+msgid "Items"
+msgstr "Itens"
+
+msgid "+ Add Item"
+msgstr "+ Adicionar Item"
+
+msgid "Update Status"
+msgstr "Atualizar Estado"
+
+msgid "Timeline"
+msgstr "Cronologia"
+
+msgid "No status changes yet."
+msgstr "Ainda sem alterações de estado."
+
+msgid "Assigned to"
+msgstr "Atribuído a"
+
+msgid "Created"
+msgstr "Criado"
+
+msgid "Contact"
+msgstr "Contacto"
+
+msgid "No clients found."
+msgstr "Nenhum cliente encontrado."
+
+msgid "No items yet."
+msgstr "Ainda sem itens."
+
+msgid "No orders found."
+msgstr "Nenhuma encomenda encontrada."
+
+#, fuzzy
+#| msgid "Batch cost calculated."
+msgid "Batch Calculator"
+msgstr "Custo do lote calculado."
+
+msgid "Base"
+msgstr ""
+
+#, fuzzy
+#| msgid "Edit Formulation"
+msgid "Back to Formulation"
+msgstr "Editar Formulação"
+
+#, fuzzy
+#| msgid "Calculate Total"
+msgid "Calculate Quantities"
+msgstr "Calcular Total"
+
+#, fuzzy
+#| msgid "Calculate Total"
+msgid "Calculate"
+msgstr "Calcular Total"
+
+#, fuzzy
+#| msgid "New Formulation"
+msgid "Base Formula"
+msgstr "Nova Formulação"
+
+#, fuzzy
+#| msgid "initial quantity"
+msgid "Enter a desired quantity"
+msgstr "quantidade inicial"
+
+#, python-format
+msgid ""
+"\n"
+"                    Enter the total quantity you want to produce and the "
+"system will calculate how much of each ingredient you need. The base formula "
+"is for %(base)s %(unit)s.\n"
+"                "
+msgstr ""
+
+msgid "Raw Material Cost (Auto-calculated)"
+msgstr "Custo de Matérias-Primas (Calculado automaticamente)"
+
+msgid "Based on lot cost-per-unit and quantities used"
+msgstr "Baseado no custo por unidade do lote e quantidades utilizadas"
+
+msgid "Additional Costs"
+msgstr "Custos Adicionais"
+
+msgid "Calculate Total"
+msgstr "Calcular Total"
+
+msgid "PDF Report"
+msgstr "Relatório PDF"
+
+msgid "Label"
+msgstr "Rótulo"
+
+msgid "Cost"
+msgstr "Custo"
+
+msgid "Production Steps"
+msgstr "Passos de Produção"
+
+msgid "No steps defined."
+msgstr "Nenhum passo definido."
+
+msgid "Material Usage"
+msgstr "Utilização de Material"
+
+msgid "Qty Used"
+msgstr "Qtd Utilizada"
+
+msgid "Prohibited Substance Warning"
+msgstr "Aviso de Substância Proibida"
+
+msgid "Appearance"
+msgstr "Aspeto"
+
+msgid "pH"
+msgstr "pH"
+
+msgid "Weight Deviation"
+msgstr "Desvio de Peso"
+
+msgid "View full QC report"
+msgstr "Ver relatório de CQ completo"
+
+msgid "Record QC"
+msgstr "Registar CQ"
+
+msgid "No QC record yet."
+msgstr "Ainda sem registo de CQ."
+
+msgid "Cost Breakdown"
+msgstr "Discriminação de Custos"
+
+msgid "Packaging"
+msgstr "Embalagem"
+
+msgid "Preparation Fee"
+msgstr "Honorários de Preparação"
+
+msgid "Produced by"
+msgstr "Produzido por"
+
+msgid "Verified by"
+msgstr "Verificado por"
+
+msgid "Qty Produced"
+msgstr "Qtd Produzida"
+
+msgid "Batch #"
+msgstr "Lote #"
+
+msgid "Formulation"
+msgstr "Formulação"
+
+msgid "No batches found."
+msgstr "Nenhum lote encontrado."
+
+#, fuzzy
+#| msgid "New Formulation"
+msgid "New Calibration"
+msgstr "Nova Formulação"
+
+msgid "Equipment"
+msgstr ""
+
+#, fuzzy
+#| msgid "Material"
+msgid "Serial #"
+msgstr "Material"
+
+msgid "Calibration Date"
+msgstr ""
+
+msgid "Next Calibration"
+msgstr ""
+
+msgid "Performed by"
+msgstr "Realizado por"
+
+msgid "Certificate"
+msgstr ""
+
+#, fuzzy
+#| msgid "No formulations found."
+msgid "No calibration records found."
+msgstr "Nenhuma formulação encontrada."
+
+msgid "Shelf life"
+msgstr "Prazo de validade"
+
+msgid "days"
+msgstr "dias"
+
+msgid "Ingredients"
+msgstr "Ingredientes"
+
+msgid "+ Add"
+msgstr "+ Adicionar"
+
+msgid "Steps"
+msgstr "Passos"
+
+msgid "Form"
+msgstr "Forma"
+
+msgid "Shelf Life"
+msgstr "Prazo de Validade"
+
+msgid "No formulations found."
+msgstr "Nenhuma formulação encontrada."
+
+#, fuzzy
+#| msgid "Calculate Total"
+msgid "Calculated Quantities"
+msgstr "Calcular Total"
+
+msgid "Scale"
+msgstr ""
+
+msgid "Base Qty"
+msgstr ""
+
+#, fuzzy
+#| msgid "Calculate Total"
+msgid "Calculated Qty"
+msgstr "Calcular Total"
+
+#, python-format
+msgid ""
+"\n"
+"                        Base formula: %(base)s%(unit)s &rarr; Desired: "
+"%(desired)s%(unit)s (factor: %(factor)sx).\n"
+"                        All quantities have been proportionally scaled.\n"
+"                    "
+msgstr ""
+
+msgid "No ingredients added."
+msgstr "Nenhum ingrediente adicionado."
+
+msgid "Complete Step"
+msgstr "Concluir Passo"
+
+msgid "Step"
+msgstr "Passo"
+
+msgid "Instructions"
+msgstr "Instruções"
+
+msgid "Mark Complete"
+msgstr "Marcar como Concluído"
+
+msgid "Organoleptic Checks"
+msgstr "Verificações Organoléticas"
+
+msgid "Odor"
+msgstr "Odor"
+
+msgid "Texture"
+msgstr "Textura"
+
+msgid "Measurements"
+msgstr "Medições"
+
+msgid "pH Value"
+msgstr "Valor de pH"
+
+msgid "Expected Weight"
+msgstr "Peso Esperado"
+
+msgid "Actual Weight"
+msgstr "Peso Real"
+
+msgid "Observations"
+msgstr "Observações"
+
+msgid "Back to Batch"
+msgstr "Voltar ao Lote"
+
+msgid "Save QC Record"
+msgstr "Guardar Registo de CQ"
+
+msgid "Join"
+msgstr ""
+
+msgid "You've been invited as"
+msgstr ""
+
+msgid "Password"
+msgstr "Palavra-passe"
+
+#, fuzzy
+#| msgid "Change Password"
+msgid "Confirm password"
+msgstr "Alterar Palavra-passe"
+
+#, fuzzy
+#| msgid "Create"
+msgid "Create Account"
+msgstr "Criar"
+
+msgid "Already have an account?"
+msgstr ""
+
+msgid "Sign in"
+msgstr "Iniciar sessão"
+
+msgid "Login"
+msgstr "Iniciar Sessão"
+
+msgid "Sign in to your account"
+msgstr "Inicie sessão na sua conta"
+
+msgid "Invalid email or password."
+msgstr "E-mail ou palavra-passe inválidos."
+
+msgid "Don't have an account?"
+msgstr ""
+
+msgid "Password Changed"
+msgstr "Palavra-passe Alterada"
+
+msgid "Your password has been changed successfully."
+msgstr "A sua palavra-passe foi alterada com sucesso."
+
+msgid "Back to Dashboard"
+msgstr "Voltar ao Painel"
+
+msgid "Create your pharmacy account"
+msgstr ""
+
+#, fuzzy
+#| msgid "Pharmacist"
+msgid "Pharmacy Details"
+msgstr "Farmacêutico"
+
+#, fuzzy
+#| msgid "Administrator"
+msgid "Administrator Account"
+msgstr "Administrador"
+
+#~ msgid "Username"
+#~ msgstr "Nome de utilizador"
+
+#~ msgid "Search"
+#~ msgstr "Pesquisar"

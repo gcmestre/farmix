@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{% trans "Lots" %} - Farmix{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Lots" %}</h1>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        {% if user|has_role:"admin" or user|has_role:"pharmacist" or user|has_role:"lab_technician" %}
+        <a href="{% url 'inventory:lot_create' %}" class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+            <svg class="w-3.5 h-3.5 me-2" fill="none" viewBox="0 0 18 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            </svg>
+            {% trans "Receive Lot" %}
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="flex flex-wrap gap-2 mb-4">
+    <a href="{% url 'inventory:lot_list' %}" class="px-4 py-2 text-sm font-medium rounded-lg {% if not current_status %}text-white bg-blue-700{% else %}text-gray-900 bg-white border border-gray-200 hover:bg-gray-100{% endif %}">{% trans "All" %}</a>
+    <a href="?status=active" class="px-4 py-2 text-sm font-medium rounded-lg {% if current_status == 'active' %}text-white bg-blue-700{% else %}text-gray-900 bg-white border border-gray-200 hover:bg-gray-100{% endif %}">{% trans "Active" %}</a>
+    <a href="?status=quarantined" class="px-4 py-2 text-sm font-medium rounded-lg {% if current_status == 'quarantined' %}text-white bg-blue-700{% else %}text-gray-900 bg-white border border-gray-200 hover:bg-gray-100{% endif %}">{% trans "Quarantined" %}</a>
+    <a href="?status=exhausted" class="px-4 py-2 text-sm font-medium rounded-lg {% if current_status == 'exhausted' %}text-white bg-blue-700{% else %}text-gray-900 bg-white border border-gray-200 hover:bg-gray-100{% endif %}">{% trans "Exhausted" %}</a>
+</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3">{% trans "Lot #" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Material" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Supplier" %}</th>
+                <th scope="col" class="px-6 py-3 text-right">{% trans "Qty" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Expiry" %}</th>
+                <th scope="col" class="px-6 py-3 text-center">{% trans "Status" %}</th>
+                <th scope="col" class="px-6 py-3 text-right">{% trans "Actions" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lot in lots %}
+            <tr class="bg-white border-b hover:bg-gray-50">
+                <td class="px-6 py-4 font-medium"><a href="{% url 'inventory:lot_detail' lot.pk %}" class="text-blue-600 hover:text-blue-800">{{ lot.lot_number }}</a></td>
+                <td class="px-6 py-4 text-gray-900">{{ lot.raw_material.name }}</td>
+                <td class="px-6 py-4">{{ lot.supplier.name }}</td>
+                <td class="px-6 py-4 text-right">{{ lot.current_quantity|floatformat:"-3" }}</td>
+                <td class="px-6 py-4">{{ lot.expiry_date|date:"d/m/Y" }}</td>
+                <td class="px-6 py-4 text-center">
+                    {% if lot.is_quarantined %}
+                    {% include "components/_badge.html" with label="Quarantined" color="yellow" %}
+                    {% elif lot.is_exhausted %}
+                    {% include "components/_badge.html" with label="Exhausted" color="gray" %}
+                    {% else %}
+                    {% include "components/_badge.html" with label="Active" color="green" %}
+                    {% endif %}
+                </td>
+                <td class="px-6 py-4 text-right"><a href="{% url 'inventory:lot_detail' lot.pk %}" class="text-blue-600 hover:text-blue-800">{% trans "View" %}</a></td>
+            </tr>
+            {% empty %}
+            <tr class="bg-white"><td colspan="7" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No lots found." %}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

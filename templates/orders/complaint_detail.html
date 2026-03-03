@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} - Farmix{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Complaint" %} — {{ complaint.complaint_date|date:"d/m/Y" }}</h1>
+        <p class="mt-1 text-sm text-gray-500">{{ complaint.complainant_name }}</p>
+    </div>
+    <div>
+        <span class="text-xs font-medium px-2.5 py-0.5 rounded-full
+            {% if complaint.status == 'open' %}bg-yellow-100 text-yellow-800
+            {% elif complaint.status == 'investigating' %}bg-blue-100 text-blue-800
+            {% elif complaint.status == 'resolved' %}bg-green-100 text-green-800
+            {% else %}bg-gray-100 text-gray-800{% endif %}">
+            {{ complaint.get_status_display }}
+        </span>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="lg:col-span-2 space-y-6">
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+            <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Description" %}</h5>
+            <p class="text-sm text-gray-700 whitespace-pre-wrap">{{ complaint.description }}</p>
+        </div>
+
+        {% if complaint.investigation %}
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+            <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Investigation" %}</h5>
+            <p class="text-sm text-gray-700 whitespace-pre-wrap">{{ complaint.investigation }}</p>
+        </div>
+        {% endif %}
+
+        {% if complaint.corrective_action %}
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+            <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Corrective Action" %}</h5>
+            <p class="text-sm text-gray-700 whitespace-pre-wrap">{{ complaint.corrective_action }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="space-y-6">
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+            <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Details" %}</h5>
+            <dl class="grid grid-cols-1 gap-4">
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">{% trans "Complainant" %}</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ complaint.complainant_name }}</dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">{% trans "Date" %}</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ complaint.complaint_date|date:"d/m/Y" }}</dd>
+                </div>
+                {% if complaint.order %}
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">{% trans "Order" %}</dt>
+                    <dd class="mt-1 text-sm text-gray-900">
+                        <a href="{% url 'orders:order_detail' complaint.order.pk %}" class="text-blue-600 hover:text-blue-800">{{ complaint.order.order_number }}</a>
+                    </dd>
+                </div>
+                {% endif %}
+                {% if complaint.batch %}
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">{% trans "Batch" %}</dt>
+                    <dd class="mt-1 text-sm text-gray-900">
+                        <a href="{% url 'production:batch_detail' complaint.batch.pk %}" class="text-blue-600 hover:text-blue-800">{{ complaint.batch.batch_number }}</a>
+                    </dd>
+                </div>
+                {% endif %}
+                {% if complaint.resolved_by %}
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">{% trans "Resolved by" %}</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ complaint.resolved_by.get_full_name }}</dd>
+                </div>
+                {% endif %}
+                {% if complaint.resolved_at %}
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">{% trans "Resolved at" %}</dt>
+                    <dd class="mt-1 text-sm text-gray-900">{{ complaint.resolved_at|date:"d/m/Y H:i" }}</dd>
+                </div>
+                {% endif %}
+            </dl>
+        </div>
+        <a href="{% url 'orders:complaint_list' %}" class="block text-center py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+            {% trans "Back to list" %}
+        </a>
+    </div>
+</div>
+{% endblock %}

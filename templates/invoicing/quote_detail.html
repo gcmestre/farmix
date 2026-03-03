@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{{ quote.quote_number }} - Farmix{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{{ quote.quote_number }}</h1>
+        <p class="mt-1 text-sm text-gray-500">{{ quote.client.name }} &middot; {{ quote.order.order_number }}</p>
+    </div>
+    {% if user|has_role:"admin" or user|has_role:"pharmacist" %}
+    <div class="flex flex-wrap gap-2">
+        <a href="{% url 'invoicing:quote_add_line' quote.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">{% trans "+ Add Line" %}</a>
+        <a href="{% url 'invoicing:quote_to_invoice' quote.pk %}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">{% trans "Convert to Invoice" %}</a>
+    </div>
+    {% endif %}
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Line items table -->
+    <div class="lg:col-span-2 p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Lines" %}</h5>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">{% trans "Description" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Qty" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Price" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "IVA" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Total" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for line in lines %}
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 text-gray-900">{{ line.description }}</td>
+                        <td class="px-6 py-4 text-right">{{ line.quantity|floatformat:"-3" }} {{ line.unit }}</td>
+                        <td class="px-6 py-4 text-right">{{ line.unit_price|floatformat:2 }}</td>
+                        <td class="px-6 py-4 text-right">{{ line.iva_rate|floatformat:"-2" }}%</td>
+                        <td class="px-6 py-4 text-gray-900 font-medium text-right">{{ line.total_with_iva|floatformat:2 }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr class="bg-white border-b">
+                        <td colspan="5" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No lines." %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                {% if lines %}
+                <tfoot class="bg-gray-50">
+                    <tr>
+                        <td colspan="4" class="px-6 py-3 text-sm font-medium text-gray-900 text-right">{% trans "Total (inc. IVA)" %}</td>
+                        <td class="px-6 py-3 text-sm font-bold text-gray-900 text-right">{{ quote.total_with_iva|floatformat:2 }}</td>
+                    </tr>
+                </tfoot>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+
+    <!-- Details card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Details" %}</h5>
+        <dl class="grid grid-cols-1 gap-4">
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Valid Until" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ quote.valid_until|date:"d/m/Y" }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Subtotal" %}</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ quote.total|floatformat:2 }}</dd>
+            </div>
+            <div>
+                <dt class="text-sm font-medium text-gray-500">{% trans "Total w/ IVA" %}</dt>
+                <dd class="mt-1 text-sm font-bold text-gray-900">{{ quote.total_with_iva|floatformat:2 }}</dd>
+            </div>
+        </dl>
+        {% if quote.notes %}
+        <div class="mt-4 pt-4 border-t border-gray-200">
+            <dt class="text-sm font-medium text-gray-500">{% trans "Notes" %}</dt>
+            <dd class="mt-1 text-sm text-gray-900">{{ quote.notes }}</dd>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

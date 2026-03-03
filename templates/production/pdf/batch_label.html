@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Label - {{ batch.batch_number }}</title>
+    <style>
+        @page {
+            size: 100mm 70mm;
+            margin: 3mm;
+        }
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 8pt;
+            color: #1a1a1a;
+            line-height: 1.3;
+            margin: 0;
+            padding: 0;
+        }
+        .label {
+            width: 94mm;
+            height: 64mm;
+            border: 0.5pt solid #ccc;
+            padding: 2mm;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 1pt solid #333;
+            padding-bottom: 2mm;
+            margin-bottom: 2mm;
+        }
+        .header h1 {
+            font-size: 10pt;
+            margin: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .pharmacy {
+            font-size: 7pt;
+            color: #555;
+            margin: 1mm 0 0 0;
+        }
+        .content {
+            font-size: 8pt;
+        }
+        .content p {
+            margin: 1mm 0;
+        }
+        .field-label {
+            font-weight: 600;
+            font-size: 7pt;
+            color: #555;
+        }
+        .field-value {
+            font-size: 8pt;
+        }
+        .warning {
+            margin-top: 2mm;
+            padding: 1mm 2mm;
+            border: 0.5pt solid #cc0000;
+            font-size: 7pt;
+            color: #cc0000;
+            text-align: center;
+            font-weight: 600;
+        }
+        .footer {
+            position: absolute;
+            bottom: 3mm;
+            left: 5mm;
+            right: 5mm;
+            font-size: 6pt;
+            color: #777;
+            text-align: center;
+            border-top: 0.5pt solid #ccc;
+            padding-top: 1mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="label">
+        <div class="header">
+            <h1>Medicamento Manipulado</h1>
+            <p class="pharmacy">{{ pharmacy_name }}{% if pharmacy_anf_number %} &mdash; ANF {{ pharmacy_anf_number }}{% endif %}</p>
+        </div>
+        <div class="content">
+            <p><span class="field-label">Fórmula:</span> <span class="field-value">{{ batch.formulation.name }}</span></p>
+            {% if ingredients %}
+            <p><span class="field-label">Composição:</span>
+                <span class="field-value">{% for ing in ingredients %}{{ ing.raw_material.name }} {{ ing.quantity|floatformat:"-4" }} {{ ing.unit }}{% if not forloop.last %}, {% endif %}{% endfor %}</span>
+            </p>
+            {% endif %}
+            <p><span class="field-label">Forma farmacêutica:</span> <span class="field-value">{{ batch.formulation.pharmaceutical_form }}</span></p>
+            {% if batch.formulation.route_of_administration %}
+            <p><span class="field-label">Via de administração:</span> <span class="field-value">{{ batch.formulation.route_of_administration }}</span></p>
+            {% endif %}
+            {% if batch.formulation.dosage_instructions %}
+            <p><span class="field-label">Posologia:</span> <span class="field-value">{{ batch.formulation.dosage_instructions }}</span></p>
+            {% endif %}
+            {% if prescription %}
+            <p><span class="field-label">Utente:</span> <span class="field-value">{{ prescription.patient_name }}</span></p>
+            {% endif %}
+            <p><span class="field-label">Lote:</span> <span class="field-value">{{ batch.batch_number }}</span></p>
+            <p><span class="field-label">Quantidade:</span> <span class="field-value">{{ batch.quantity_produced|floatformat:"-3" }} {{ batch.unit }}</span></p>
+            {% if batch.expiry_date %}
+            <p><span class="field-label">Validade:</span> <span class="field-value">{{ batch.expiry_date|date:"d/m/Y" }}</span></p>
+            {% endif %}
+            {% if storage_conditions %}
+            <p><span class="field-label">Conservação:</span> <span class="field-value">{{ storage_conditions }}</span></p>
+            {% endif %}
+            <div class="warning">Manter fora do alcance e da vista das crianças</div>
+        </div>
+    </div>
+</body>
+</html>

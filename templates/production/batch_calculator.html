@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load i18n core_tags widget_tweaks %}
+
+{% block title %}{{ title }} - Farmix{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Batch Calculator" %}</h1>
+        <p class="mt-1 text-sm text-gray-500">
+            {{ formulation.code }} - {{ formulation.name }}
+            &middot; {% trans "Base" %}: {{ formulation.base_quantity|floatformat:"-3" }} {{ formulation.base_unit }}
+        </p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+        <a href="{% url 'production:formulation_detail' formulation.pk %}" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+            {% trans "Back to Formulation" %}
+        </a>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Calculator form -->
+    <div class="lg:col-span-1">
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+            <h5 class="mb-4 text-lg font-semibold text-gray-900">{% trans "Calculate Quantities" %}</h5>
+            <form method="get"
+                  hx-get="{% url 'production:batch_calculator' formulation.pk %}"
+                  hx-target="#calculator-results"
+                  hx-swap="innerHTML"
+                  hx-include="[name='desired_quantity']">
+                <div class="mb-4">
+                    <label for="id_desired_quantity" class="block mb-2 text-sm font-medium text-gray-900">
+                        {% trans "Desired quantity" %} ({{ formulation.base_unit }})
+                    </label>
+                    {% if form.desired_quantity.value %}
+                    {{ form.desired_quantity|add_class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" }}
+                    {% else %}
+                    <input type="number" name="desired_quantity" id="id_desired_quantity"
+                           step="0.001" min="0.001" placeholder="1000"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    {% endif %}
+                    {% if form.desired_quantity.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ form.desired_quantity.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                    {% trans "Calculate" %}
+                </button>
+            </form>
+
+            <!-- Base formula summary -->
+            <div class="mt-6 pt-4 border-t border-gray-200">
+                <h6 class="mb-2 text-sm font-semibold text-gray-700">{% trans "Base Formula" %} ({{ formulation.base_quantity|floatformat:"-3" }}{{ formulation.base_unit }})</h6>
+                <ul class="space-y-1">
+                    {% for ing in ingredients %}
+                    <li class="text-sm text-gray-600 flex justify-between">
+                        <span>{{ ing.raw_material.name }}</span>
+                        <span class="font-medium">{{ ing.quantity|floatformat:"-4" }} {{ ing.unit }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results -->
+    <div class="lg:col-span-2" id="calculator-results">
+        {% if result %}
+        {% include "production/partials/_calculator_results.html" %}
+        {% else %}
+        <div class="p-12 bg-white border border-gray-200 rounded-lg shadow text-center">
+            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008H15.75v-.008zm0 2.25h.008v.008H15.75V13.5z"/>
+            </svg>
+            <h3 class="mt-4 text-lg font-medium text-gray-900">{% trans "Enter a desired quantity" %}</h3>
+            <p class="mt-2 text-sm text-gray-500">
+                {% blocktrans with base=formulation.base_quantity unit=formulation.base_unit %}
+                    Enter the total quantity you want to produce and the system will calculate how much of each ingredient you need. The base formula is for {{ base }} {{ unit }}.
+                {% endblocktrans %}
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

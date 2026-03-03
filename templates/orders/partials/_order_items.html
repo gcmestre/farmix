@@ -1,0 +1,36 @@
+{% load i18n %}
+
+<table class="w-full text-sm text-left text-gray-500">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+            <th scope="col" class="px-6 py-3">{% trans "Description" %}</th>
+            <th scope="col" class="px-6 py-3">{% trans "Qty" %}</th>
+            <th scope="col" class="px-6 py-3">{% trans "Unit" %}</th>
+            <th scope="col" class="px-6 py-3 text-right">{% trans "Price" %}</th>
+            <th scope="col" class="px-6 py-3 text-right">{% trans "Total" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr class="bg-white border-b border-gray-200">
+            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ item.description }}</td>
+            <td class="px-6 py-4">{{ item.quantity|floatformat:"-3" }}</td>
+            <td class="px-6 py-4">{{ item.unit }}</td>
+            <td class="px-6 py-4 text-right">&euro;{{ item.unit_price|floatformat:2 }}</td>
+            <td class="px-6 py-4 text-right font-medium text-gray-900">&euro;{{ item.total_price|floatformat:2 }}</td>
+        </tr>
+        {% empty %}
+        <tr class="bg-white">
+            <td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">{% trans "No items yet." %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    {% if items %}
+    <tfoot>
+        <tr class="bg-gray-50 border-t-2 border-gray-300">
+            <td colspan="4" class="px-6 py-3 text-right text-sm font-semibold text-gray-900">{% trans "Order Total" %}</td>
+            <td class="px-6 py-3 text-right text-sm font-bold text-gray-900">&euro;{{ order_total|floatformat:2 }}</td>
+        </tr>
+    </tfoot>
+    {% endif %}
+</table>

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Inventory Alerts" %} - Farmix{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Inventory Alerts" %}</h1>
+    </div>
+</div>
+
+<div class="space-y-6">
+    <!-- Low Stock Materials -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-red-700">{% trans "Low Stock Materials" %} ({{ low_stock|length }})</h5>
+        {% if low_stock %}
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">{% trans "Code" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Name" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Current" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Minimum" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in low_stock %}
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium text-blue-600 hover:underline">
+                            <a href="{% url 'inventory:material_detail' m.pk %}">{{ m.code }}</a>
+                        </td>
+                        <td class="px-6 py-4 text-gray-900">{{ m.name }}</td>
+                        <td class="px-6 py-4 text-red-600 font-semibold text-right">{{ m.current_stock|floatformat:"-3" }}</td>
+                        <td class="px-6 py-4 text-right">{{ m.minimum_stock|floatformat:"-3" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="py-8 text-center text-sm text-gray-500">{% trans "No low stock alerts." %}</p>
+        {% endif %}
+    </div>
+
+    <!-- Expiring Soon -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-yellow-700">{% trans "Expiring Soon (30 days)" %} ({{ expiring|length }})</h5>
+        {% if expiring %}
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">{% trans "Lot #" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Material" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Expiry" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Qty" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lot in expiring %}
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium text-blue-600 hover:underline">
+                            <a href="{% url 'inventory:lot_detail' lot.pk %}">{{ lot.lot_number }}</a>
+                        </td>
+                        <td class="px-6 py-4 text-gray-900">{{ lot.raw_material.name }}</td>
+                        <td class="px-6 py-4 text-yellow-600 font-semibold">{{ lot.expiry_date|date:"d/m/Y" }}</td>
+                        <td class="px-6 py-4 text-right">{{ lot.current_quantity|floatformat:"-3" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="py-8 text-center text-sm text-gray-500">{% trans "No lots expiring soon." %}</p>
+        {% endif %}
+    </div>
+
+    <!-- Expired Lots -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h5 class="mb-4 text-lg font-semibold text-red-700">{% trans "Expired Lots" %} ({{ expired|length }})</h5>
+        {% if expired %}
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">{% trans "Lot #" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Material" %}</th>
+                        <th scope="col" class="px-6 py-3">{% trans "Expired" %}</th>
+                        <th scope="col" class="px-6 py-3 text-right">{% trans "Qty" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lot in expired %}
+                    <tr class="bg-white border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium text-blue-600 hover:underline">
+                            <a href="{% url 'inventory:lot_detail' lot.pk %}">{{ lot.lot_number }}</a>
+                        </td>
+                        <td class="px-6 py-4 text-gray-900">{{ lot.raw_material.name }}</td>
+                        <td class="px-6 py-4 text-red-600 font-semibold">{{ lot.expiry_date|date:"d/m/Y" }}</td>
+                        <td class="px-6 py-4 text-right">{{ lot.current_quantity|floatformat:"-3" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="py-8 text-center text-sm text-gray-500">{% trans "No expired lots." %}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

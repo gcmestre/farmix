@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+
+{% block title %}{% trans "Prohibited Substances" %} - Farmix{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div class="mb-4 sm:mb-0">
+        <h1 class="text-2xl font-bold text-gray-900">{% trans "Prohibited Substances" %}</h1>
+        <p class="mt-1 text-sm text-gray-500">{% trans "Deliberação 1985/2015" %}</p>
+    </div>
+    {% if user|has_role:"admin" or user|has_role:"pharmacist" %}
+    <div>
+        <a href="{% url 'inventory:prohibited_create' %}" class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+            <svg class="w-3.5 h-3.5 me-2" fill="none" viewBox="0 0 18 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            </svg>
+            {% trans "Add Substance" %}
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<div class="p-6 bg-white border border-gray-200 rounded-lg shadow">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">{% trans "Name" %}</th>
+                    <th scope="col" class="px-6 py-3">{% trans "CAS Number" %}</th>
+                    <th scope="col" class="px-6 py-3">{% trans "Regulation" %}</th>
+                    <th scope="col" class="px-6 py-3">{% trans "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in substances %}
+                <tr class="bg-white border-b hover:bg-gray-50">
+                    <td class="px-6 py-4 font-medium text-gray-900">{{ s.name }}</td>
+                    <td class="px-6 py-4">{{ s.cas_number|default:"-" }}</td>
+                    <td class="px-6 py-4">{{ s.regulation }}</td>
+                    <td class="px-6 py-4">
+                        <a href="{% url 'inventory:prohibited_edit' s.pk %}" class="font-medium text-blue-600 hover:underline">{% trans "Edit" %}</a>
+                        <span class="text-gray-300 mx-1">|</span>
+                        <a href="{% url 'inventory:prohibited_delete' s.pk %}" class="font-medium text-red-600 hover:underline" onclick="return confirm('{% trans "Are you sure?" %}')">{% trans "Delete" %}</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr class="bg-white border-b">
+                    <td colspan="4" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No prohibited substances registered." %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

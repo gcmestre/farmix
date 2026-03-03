@@ -1,0 +1,40 @@
+{% load i18n core_tags %}
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3">{% trans "Order #" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Client" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Status" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Priority" %}</th>
+                <th scope="col" class="px-6 py-3">{% trans "Date" %}</th>
+                <th scope="col" class="px-6 py-3 text-right">{% trans "Actions" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in filter.qs %}
+            <tr class="bg-white border-b hover:bg-gray-50">
+                <td class="px-6 py-4 font-medium">
+                    <a href="{% url 'orders:order_detail' order.pk %}" class="text-blue-600 hover:text-blue-800">{{ order.order_number }}</a>
+                </td>
+                <td class="px-6 py-4">{{ order.client.name }}</td>
+                <td class="px-6 py-4">
+                    {% include "components/_badge.html" with label=order.get_status_display color=order.status|status_color %}
+                </td>
+                <td class="px-6 py-4">
+                    {% include "components/_badge.html" with label=order.get_priority_display color=order.priority|status_color %}
+                </td>
+                <td class="px-6 py-4">{{ order.created_at|date:"d/m/Y" }}</td>
+                <td class="px-6 py-4 text-right">
+                    <a href="{% url 'orders:order_detail' order.pk %}" class="text-blue-600 hover:text-blue-800">{% trans "View" %}</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr class="bg-white">
+                <td colspan="6" class="px-6 py-8 text-center text-sm text-gray-500">{% trans "No orders found." %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
