@@ -72,7 +72,7 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")  # noqa: F405
 EMAIL_USE_TLS = env("EMAIL_USE_TLS", default=True)  # noqa: F405
 DEFAULT_FROM_EMAIL = env(  # noqa: F405
     "DEFAULT_FROM_EMAIL",
-    default="noreply@compoundmeds.pt",
+    default="noreply@farmix.pt",
 )
 
 # --- Sentry ---
