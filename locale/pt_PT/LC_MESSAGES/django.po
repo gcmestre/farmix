@@ -2160,6 +2160,20 @@ msgstr "Farmacêutico"
 msgid "Administrator Account"
 msgstr "Administrador"
 
+msgid "Your password can’t be too similar to your other personal information."
+msgstr "A sua palavra-passe não pode ser demasiado semelhante às suas outras informações pessoais."
+
+msgid "Your password must contain at least %(min_length)d character."
+msgid_plural "Your password must contain at least %(min_length)d characters."
+msgstr[0] "A sua palavra-passe deve conter pelo menos %(min_length)d carácter."
+msgstr[1] "A sua palavra-passe deve conter pelo menos %(min_length)d caracteres."
+
+msgid "Your password can’t be a commonly used password."
+msgstr "A sua palavra-passe não pode ser uma palavra-passe de uso comum."
+
+msgid "Your password can’t be entirely numeric."
+msgstr "A sua palavra-passe não pode ser inteiramente numérica."
+
 #~ msgid "Username"
 #~ msgstr "Nome de utilizador"
 

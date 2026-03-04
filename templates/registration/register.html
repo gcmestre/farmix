@@ -63,7 +63,7 @@
                 <div>
                     <label for="id_password1" class="block mb-2 text-sm font-medium text-gray-900">{% trans "Password" %}<span class="text-red-600 ms-1">*</span></label>
                     {% render_field form.password1 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %}
-                    {% if form.password1.help_text %}<p class="mt-2 text-sm text-gray-500">{{ form.password1.help_text }}</p>{% endif %}
+                    {% include "components/_password_hints.html" with help_text=form.password1.help_text %}
                     {% for error in form.password1.errors %}<p class="mt-2 text-sm text-red-600">{{ error }}</p>{% endfor %}
                 </div>
                 <div>

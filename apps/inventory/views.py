@@ -70,6 +70,8 @@ def material_create(request):
             material.pharmacy = pharmacy
             material.save()
             messages.success(request, _("Material created."))
+            if "add_another" in request.POST:
+                return redirect("inventory:material_create")
             return redirect("inventory:material_detail", pk=material.pk)
     else:
         form = RawMaterialForm(pharmacy=pharmacy)

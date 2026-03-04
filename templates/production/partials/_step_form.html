@@ -4,7 +4,7 @@
           hx-post="{% url 'production:formulation_add_step' formulation.pk %}"
           hx-target="#steps-list"
           hx-swap="innerHTML"
-          hx-on::after-request="if(event.detail.successful) this.closest('#step-form').innerHTML=''">
+          hx-on::after-request="if(event.detail.successful) this.reset()">
         {% csrf_token %}
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {% for field in form %}
