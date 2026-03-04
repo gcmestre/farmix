@@ -10,4 +10,4 @@ echo "Compiling translations..."
 python manage.py compilemessages --ignore=.venv 2>/dev/null || true
 
 echo "Starting Gunicorn..."
-gunicorn config.wsgi --bind 0.0.0.0:${PORT:-8000} --workers 2 --timeout 120
+gunicorn -b 0.0.0.0:8000 config.wsgi:application  --access-logfile '-' --error-logfile '-' --log-level debug --timeout 600
