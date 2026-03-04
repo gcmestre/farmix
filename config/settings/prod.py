@@ -86,5 +86,5 @@ if SENTRY_DSN:
     )
 
 DATABASES = {
-    "default": {env.db()}
+    "default": env.db(),
 }
